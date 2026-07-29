@@ -1,0 +1,54 @@
+cmake:
+  application:
+    configuration-dir: '/local/home/achraftm/zephyrproject/gettingShitTogether/cleanTry'
+    source-dir: '/local/home/achraftm/zephyrproject/gettingShitTogether/cleanTry'
+  board:
+    name: 'stm32mp135f_dk'
+    path:
+     - '/local/home/achraftm/zephyrproject/zephyr/boards/st/stm32mp135f_dk'
+    qualifiers: 'stm32mp135fxx'
+    revision: ''
+  devicetree:
+    bindings-dirs:
+     - '/local/home/achraftm/zephyrproject/zephyr/dts/bindings'
+    files:
+     - '/local/home/achraftm/zephyrproject/zephyr/boards/st/stm32mp135f_dk/stm32mp135f_dk.dts'
+    include-dirs:
+     - '/local/home/achraftm/zephyrproject/modules/hal/ambiq/dts'
+     - '/local/home/achraftm/zephyrproject/modules/hal/atmel/include'
+     - '/local/home/achraftm/zephyrproject/modules/hal/bouffalolab/include'
+     - '/local/home/achraftm/zephyrproject/modules/hal/bouffalolab/include/zephyr'
+     - '/local/home/achraftm/zephyrproject/modules/hal/gigadevice/include'
+     - '/local/home/achraftm/zephyrproject/modules/hal/microchip/include'
+     - '/local/home/achraftm/zephyrproject/modules/hal/microchip/dts'
+     - '/local/home/achraftm/zephyrproject/modules/hal/nuvoton/dts'
+     - '/local/home/achraftm/zephyrproject/modules/hal/nxp/dts'
+     - '/local/home/achraftm/zephyrproject/modules/hal/stm32/dts'
+     - '/local/home/achraftm/zephyrproject/modules/hal/ti/dts'
+     - '/local/home/achraftm/zephyrproject/zephyr/include'
+     - '/local/home/achraftm/zephyrproject/zephyr/include/zephyr'
+     - '/local/home/achraftm/zephyrproject/zephyr/dts/common'
+     - '/local/home/achraftm/zephyrproject/zephyr/dts/vendor'
+     - '/local/home/achraftm/zephyrproject/zephyr/dts/rx'
+     - '/local/home/achraftm/zephyrproject/zephyr/dts/x86'
+     - '/local/home/achraftm/zephyrproject/zephyr/dts/xtensa'
+     - '/local/home/achraftm/zephyrproject/zephyr/dts/sparc'
+     - '/local/home/achraftm/zephyrproject/zephyr/dts/riscv'
+     - '/local/home/achraftm/zephyrproject/zephyr/dts/posix'
+     - '/local/home/achraftm/zephyrproject/zephyr/dts/arm64'
+     - '/local/home/achraftm/zephyrproject/zephyr/dts/arm'
+     - '/local/home/achraftm/zephyrproject/zephyr/dts/arc'
+     - '/local/home/achraftm/zephyrproject/zephyr/dts'
+  kconfig:
+    files:
+     - '/local/home/achraftm/zephyrproject/zephyr/boards/st/stm32mp135f_dk/stm32mp135f_dk_defconfig'
+     - '/local/home/achraftm/zephyrproject/gettingShitTogether/cleanTry/prj.conf'
+    user-files:
+     - '/local/home/achraftm/zephyrproject/gettingShitTogether/cleanTry/prj.conf'
+  toolchain:
+    name: 'zephyr'
+    path: '/local/home/achraftm/zephyr-sdk-1.0.1'
+  zephyr:
+    version: '4.4.99'
+    zephyr-base: '/local/home/achraftm/zephyrproject/zephyr'
+version: '0.1.0'
