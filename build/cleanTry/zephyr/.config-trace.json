@@ -431,9 +431,12 @@
     "CONFIG_GPIO",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "y",
+    "assign",
+    [
+      "/local/home/achraftm/zephyrproject/gettingShitTogether/cleanTry/prj.conf",
+      3
+    ]
   ],
   [
     "CONFIG_SERIAL",
@@ -482,12 +485,20 @@
     "CONFIG_UART_INTERRUPT_DRIVEN",
     "y",
     "bool",
-    "y",
+    "n",
     "assign",
     [
-      "/local/home/achraftm/zephyrproject/zephyr/boards/st/stm32mp135f_dk/stm32mp135f_dk_defconfig",
-      7
+      "/local/home/achraftm/zephyrproject/gettingShitTogether/cleanTry/prj.conf",
+      10
     ]
+  ],
+  [
+    "CONFIG_GPIO_HOGS",
+    "y",
+    "bool",
+    null,
+    "unset",
+    null
   ],
   [
     "CONFIG_GNSS",
@@ -496,6 +507,17 @@
     null,
     "unset",
     null
+  ],
+  [
+    "CONFIG_GPIO_MCP230XX_INIT_PRIORITY",
+    "y",
+    "int",
+    "50",
+    "default",
+    [
+      "/local/home/achraftm/zephyrproject/zephyr/boards/st/stm32mp135f_dk/Kconfig.defconfig",
+      11
+    ]
   ],
   [
     "CONFIG_NUM_IRQS",
@@ -778,10 +800,10 @@
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "/local/home/achraftm/zephyrproject/zephyr/kernel/Kconfig",
-      936
+      "/local/home/achraftm/zephyrproject/gettingShitTogether/cleanTry/prj.conf",
+      6
     ]
   ],
   [
@@ -2503,6 +2525,17 @@
     null
   ],
   [
+    "CONFIG_GPIO_INIT_PRIORITY",
+    "y",
+    "int",
+    "40",
+    "default",
+    [
+      "/local/home/achraftm/zephyrproject/zephyr/drivers/gpio/Kconfig",
+      50
+    ]
+  ],
+  [
     "CONFIG_MMU_PAGE_SIZE",
     "y",
     "hex",
@@ -4034,6 +4067,62 @@
     null
   ],
   [
+    "CONFIG_GPIO_GET_DIRECTION",
+    "y",
+    "bool",
+    null,
+    "unset",
+    null
+  ],
+  [
+    "CONFIG_GPIO_GET_CONFIG",
+    "y",
+    "bool",
+    null,
+    "unset",
+    null
+  ],
+  [
+    "CONFIG_GPIO_ENABLE_DISABLE_INTERRUPT",
+    "y",
+    "bool",
+    null,
+    "unset",
+    null
+  ],
+  [
+    "CONFIG_GPIO_MCP23XXX",
+    "n",
+    "bool",
+    "y",
+    "select",
+    [
+      "GPIO_MCP230XX && (DT_HAS_MICROCHIP_MCP23008_ENABLED || DT_HAS_MICROCHIP_MCP23009_ENABLED || DT_HAS_MICROCHIP_MCP23016_ENABLED || DT_HAS_MICROCHIP_MCP23017_ENABLED || DT_HAS_MICROCHIP_MCP23018_ENABLED) && GPIO"
+    ]
+  ],
+  [
+    "CONFIG_GPIO_MCP230XX",
+    "y",
+    "bool",
+    "y",
+    "default",
+    [
+      "/local/home/achraftm/zephyrproject/zephyr/drivers/gpio/Kconfig.mcp23xxx",
+      14
+    ]
+  ],
+  [
+    "CONFIG_GPIO_STM32",
+    "y",
+    "bool",
+    "y",
+    "default",
+    [
+      "/local/home/achraftm/zephyrproject/zephyr/drivers/gpio/Kconfig.stm32",
+      9
+    ]
+  ],
+  [
     "CONFIG_HAPTICS",
     "y",
     "bool",
@@ -4053,9 +4142,170 @@
     "CONFIG_I2C",
     "y",
     "bool",
+    "y",
+    "select",
+    [
+      "GPIO_MCP230XX && (DT_HAS_MICROCHIP_MCP23008_ENABLED || DT_HAS_MICROCHIP_MCP23009_ENABLED || DT_HAS_MICROCHIP_MCP23016_ENABLED || DT_HAS_MICROCHIP_MCP23017_ENABLED || DT_HAS_MICROCHIP_MCP23018_ENABLED) && GPIO"
+    ]
+  ],
+  [
+    "CONFIG_I2C_SHELL_BUFFER_SIZE",
+    "y",
+    "int",
+    "16",
+    "default",
+    [
+      "/local/home/achraftm/zephyrproject/zephyr/drivers/i2c/Kconfig",
+      27
+    ]
+  ],
+  [
+    "CONFIG_I2C_TRANSFER_TIMEOUT_SUPPORTED",
+    "n",
+    "bool",
+    "y",
+    "select",
+    [
+      "I2C_STM32 && (DT_HAS_ST_STM32_I2C_V1_ENABLED || DT_HAS_ST_STM32_I2C_V2_ENABLED) && I2C"
+    ]
+  ],
+  [
+    "CONFIG_I2C_TRANSFER_TIMEOUT_MS",
+    "y",
+    "int",
+    "500",
+    "default",
+    [
+      "/local/home/achraftm/zephyrproject/zephyr/drivers/i2c/Kconfig",
+      41
+    ]
+  ],
+  [
+    "CONFIG_I2C_CALLBACK",
+    "y",
+    "bool",
     null,
     "unset",
     null
+  ],
+  [
+    "CONFIG_I2C_BUS_RECOVERY",
+    "y",
+    "bool",
+    null,
+    "unset",
+    null
+  ],
+  [
+    "CONFIG_I2C_RTIO",
+    "y",
+    "bool",
+    null,
+    "unset",
+    null
+  ],
+  [
+    "CONFIG_I2C_TARGET",
+    "y",
+    "bool",
+    null,
+    "unset",
+    null
+  ],
+  [
+    "CONFIG_I2C_DW_EXTENDED_SUPPORT",
+    "y",
+    "bool",
+    null,
+    "unset",
+    null
+  ],
+  [
+    "CONFIG_I2C_DW_PM_POLICY_STATE_LOCK",
+    "y",
+    "bool",
+    null,
+    "unset",
+    null
+  ],
+  [
+    "CONFIG_I2C_STM32",
+    "y",
+    "bool",
+    "y",
+    "default",
+    [
+      "/local/home/achraftm/zephyrproject/zephyr/drivers/i2c/Kconfig.stm32",
+      6
+    ]
+  ],
+  [
+    "CONFIG_I2C_STM32_V2",
+    "n",
+    "bool",
+    "y",
+    "default",
+    [
+      "/local/home/achraftm/zephyrproject/zephyr/drivers/i2c/Kconfig.stm32",
+      25
+    ]
+  ],
+  [
+    "CONFIG_I2C_STM32_INTERRUPT",
+    "y",
+    "bool",
+    "y",
+    "default",
+    [
+      "/local/home/achraftm/zephyrproject/zephyr/drivers/i2c/Kconfig.stm32",
+      36
+    ]
+  ],
+  [
+    "CONFIG_I2C_STM32_BUS_RECOVERY",
+    "y",
+    "bool",
+    null,
+    "unset",
+    null
+  ],
+  [
+    "CONFIG_I2C_STM32_V2_TIMING",
+    "y",
+    "bool",
+    null,
+    "unset",
+    null
+  ],
+  [
+    "CONFIG_I2C_STM32_V2_DMA",
+    "y",
+    "bool",
+    null,
+    "unset",
+    null
+  ],
+  [
+    "CONFIG_I2C_STM32_WAIT_BUS_IDLE_TIMEOUT_USEC",
+    "y",
+    "int",
+    "2000",
+    "default",
+    [
+      "/local/home/achraftm/zephyrproject/zephyr/drivers/i2c/Kconfig.stm32",
+      73
+    ]
+  ],
+  [
+    "CONFIG_I2C_INIT_PRIORITY",
+    "y",
+    "int",
+    "50",
+    "default",
+    [
+      "/local/home/achraftm/zephyrproject/zephyr/drivers/i2c/Kconfig",
+      208
+    ]
   ],
   [
     "CONFIG_I2S",
@@ -4241,6 +4491,7 @@
     "y",
     "select",
     [
+      "I2C_STM32 && (DT_HAS_ST_STM32_I2C_V1_ENABLED || DT_HAS_ST_STM32_I2C_V2_ENABLED) && I2C",
       "UART_STM32 && DT_HAS_ST_STM32_UART_ENABLED && SERIAL"
     ]
   ],
@@ -4356,9 +4607,66 @@
     "CONFIG_RTC",
     "y",
     "bool",
+    "y",
+    "assign",
+    [
+      "/local/home/achraftm/zephyrproject/gettingShitTogether/cleanTry/prj.conf",
+      5
+    ]
+  ],
+  [
+    "CONFIG_RTC_INIT_PRIORITY",
+    "y",
+    "int",
+    "50",
+    "default",
+    [
+      "/local/home/achraftm/zephyrproject/zephyr/drivers/rtc/Kconfig",
+      17
+    ]
+  ],
+  [
+    "CONFIG_RTC_ALARM",
+    "y",
+    "bool",
     null,
     "unset",
     null
+  ],
+  [
+    "CONFIG_RTC_UPDATE",
+    "y",
+    "bool",
+    null,
+    "unset",
+    null
+  ],
+  [
+    "CONFIG_RTC_CALIBRATION",
+    "y",
+    "bool",
+    null,
+    "unset",
+    null
+  ],
+  [
+    "CONFIG_RTC_MAX31331_INTERRUPT",
+    "y",
+    "bool",
+    null,
+    "unset",
+    null
+  ],
+  [
+    "CONFIG_RTC_STM32",
+    "y",
+    "bool",
+    "y",
+    "default",
+    [
+      "/local/home/achraftm/zephyrproject/zephyr/drivers/rtc/Kconfig.stm32",
+      6
+    ]
   ],
   [
     "CONFIG_SDHC",
@@ -4880,10 +5188,10 @@
     "y",
     "bool",
     "y",
-    "default",
+    "assign",
     [
-      "/local/home/achraftm/zephyrproject/zephyr/lib/libc/Kconfig",
-      173
+      "/local/home/achraftm/zephyrproject/gettingShitTogether/cleanTry/prj.conf",
+      13
     ]
   ],
   [

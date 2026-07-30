@@ -1,0 +1,190 @@
+/* SPDX-License-Identifier: Apache-2.0 */
+
+&i2c4 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&i2c4_scl_pe15 &i2c4_sda_pb9>;
+	scl-gpios = <&gpioe 15 GPIO_ACTIVE_HIGH>;
+	sda-gpios = <&gpiob 9 GPIO_ACTIVE_HIGH>;
+	clock-frequency = <400000>;
+	status = "okay";
+
+	pmic: pmic@33 {
+		compatible = "st,stpmic1";
+		reg = <0x33>;
+		status = "okay";
+
+		regulators {
+			compatible = "st,stpmic1-regulators";
+
+			/* BUCK1 — vddcpu: CPU core supply */
+			vddcpu: buck1 {
+				regulator-name = "vddcpu";
+				regulator-min-microvolt = <1250000>;
+				regulator-max-microvolt = <1350000>;
+				regulator-always-on;
+				regulator-over-current-protection;
+
+				lp-stop {
+					regulator-suspend-microvolt = <1250000>;
+				};
+				lplv-stop {
+					regulator-suspend-microvolt = <900000>;
+				};
+				lplv-stop2 {
+					regulator-off-in-suspend;
+				};
+				standby-ddr-sr {
+					regulator-off-in-suspend;
+				};
+				standby-ddr-off {
+					regulator-off-in-suspend;
+				};
+			};
+
+			/* BUCK2 — vdd_ddr: DDR memory supply */
+			vdd_ddr: buck2 {
+				regulator-name = "vdd_ddr";
+				regulator-min-microvolt = <1350000>;
+				regulator-max-microvolt = <1350000>;
+				regulator-always-on;
+				regulator-over-current-protection;
+
+				standby-ddr-off {
+					regulator-off-in-suspend;
+				};
+			};
+
+			/* BUCK3 — vdd: main 3.3V supply */
+			vdd: buck3 {
+				regulator-name = "vdd";
+				regulator-min-microvolt = <3300000>;
+				regulator-max-microvolt = <3300000>;
+				regulator-always-on;
+				st,mask-reset;
+				regulator-over-current-protection;
+			};
+
+			/* BUCK4 — vddcore: core logic supply */
+			vddcore: buck4 {
+				regulator-name = "vddcore";
+				regulator-min-microvolt = <1250000>;
+				regulator-max-microvolt = <1250000>;
+				regulator-always-on;
+				regulator-over-current-protection;
+
+				lplv-stop {
+					regulator-suspend-microvolt = <900000>;
+				};
+				lplv-stop2 {
+					regulator-suspend-microvolt = <900000>;
+				};
+				standby-ddr-sr {
+					regulator-off-in-suspend;
+				};
+				standby-ddr-off {
+					regulator-off-in-suspend;
+				};
+			};
+
+			/* LDO1 — vdd_adc: ADC supply */
+			vdd_adc: ldo1 {
+				regulator-name = "vdd_adc";
+				regulator-min-microvolt = <3300000>;
+				regulator-max-microvolt = <3300000>;
+
+				standby-ddr-sr {
+					regulator-off-in-suspend;
+				};
+				standby-ddr-off {
+					regulator-off-in-suspend;
+				};
+			};
+
+			/* LDO2 — unused */
+			unused1: ldo2 {
+				regulator-name = "ldo2";
+			};
+
+			/* LDO3 — unused */
+			unused2: ldo3 {
+				regulator-name = "ldo3";
+			};
+
+			/* LDO4 — vdd_usb: USB supply */
+			vdd_usb: ldo4 {
+				regulator-name = "vdd_usb";
+				regulator-min-microvolt = <3300000>;
+				regulator-max-microvolt = <3300000>;
+
+				standby-ddr-sr {
+					regulator-off-in-suspend;
+				};
+				standby-ddr-off {
+					regulator-off-in-suspend;
+				};
+			};
+
+			/* LDO5 — vdd_sd: SD card supply */
+			vdd_sd: ldo5 {
+				regulator-name = "vdd_sd";
+				regulator-min-microvolt = <3300000>;
+				regulator-max-microvolt = <3300000>;
+				st,regulator-warm-boot-on;
+
+				standby-ddr-sr {
+					regulator-off-in-suspend;
+				};
+				standby-ddr-off {
+					regulator-off-in-suspend;
+				};
+			};
+
+			/* LDO6 — v1v8_periph: 1.8V peripheral supply */
+			v1v8_periph: ldo6 {
+				regulator-name = "v1v8_periph";
+				regulator-min-microvolt = <1800000>;
+				regulator-max-microvolt = <1800000>;
+
+				standby-ddr-sr {
+					regulator-off-in-suspend;
+				};
+				standby-ddr-off {
+					regulator-off-in-suspend;
+				};
+			};
+
+			/* VREF_DDR — DDR voltage reference */
+			vref_ddr: vref_ddr {
+				regulator-name = "vref_ddr";
+				regulator-always-on;
+
+				standby-ddr-sr {
+					regulator-off-in-suspend;
+				};
+				standby-ddr-off {
+					regulator-off-in-suspend;
+				};
+			};
+
+			/* BOOST — 5V USB boost */
+			bst_out: boost {
+				regulator-name = "bst_out";
+			};
+
+			/* PWR_SW2 — v3v3_sw: 3.3V switched supply */
+			v3v3_sw: pwr_sw2 {
+				regulator-name = "v3v3_sw";
+				regulator-active-discharge = <1>;
+				regulator-min-microvolt = <3300000>;
+				regulator-max-microvolt = <3300000>;
+			};
+		};
+	};
+};
+
+
+&rtc {
+	wakeup-source;
+	status = "okay";
+};
+

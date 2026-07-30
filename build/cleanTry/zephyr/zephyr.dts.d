@@ -27,4 +27,5 @@ empty_file.o: /local/home/achraftm/zephyrproject/zephyr/misc/empty_file.c \
  /local/home/achraftm/zephyrproject/zephyr/include/zephyr/dt-bindings/pinctrl/stm32-pinctrl-common.h \
  /local/home/achraftm/zephyrproject/zephyr/include/zephyr/dt-bindings/display/panel.h \
  /local/home/achraftm/zephyrproject/zephyr/include/zephyr/dt-bindings/gpio/raspberrypi-csi-connector.h \
- /local/home/achraftm/zephyrproject/zephyr/include/zephyr/dt-bindings/input/input-event-codes.h
+ /local/home/achraftm/zephyrproject/zephyr/include/zephyr/dt-bindings/input/input-event-codes.h \
+ /local/home/achraftm/zephyrproject/gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay

@@ -169,6 +169,222 @@
     ],
     [
         [
+            "int gpio_pin_interrupt_configure",
+            "const struct device *port, gpio_pin_t pin, gpio_flags_t flags"
+        ],
+        "gpio.h",
+        true
+    ],
+    [
+        [
+            "int gpio_pin_configure",
+            "const struct device *port, gpio_pin_t pin, gpio_flags_t flags"
+        ],
+        "gpio.h",
+        true
+    ],
+    [
+        [
+            "int gpio_port_get_direction",
+            "const struct device *port, gpio_port_pins_t map, gpio_port_pins_t *inputs, gpio_port_pins_t *outputs"
+        ],
+        "gpio.h",
+        true
+    ],
+    [
+        [
+            "int gpio_pin_get_config",
+            "const struct device *port, gpio_pin_t pin, gpio_flags_t *flags"
+        ],
+        "gpio.h",
+        true
+    ],
+    [
+        [
+            "int gpio_port_get_raw",
+            "const struct device *port, gpio_port_value_t *value"
+        ],
+        "gpio.h",
+        true
+    ],
+    [
+        [
+            "int gpio_port_get",
+            "const struct device *port, gpio_port_value_t *value"
+        ],
+        "gpio.h",
+        true
+    ],
+    [
+        [
+            "int gpio_port_set_masked_raw",
+            "const struct device *port, gpio_port_pins_t mask, gpio_port_value_t value"
+        ],
+        "gpio.h",
+        true
+    ],
+    [
+        [
+            "int gpio_port_set_masked",
+            "const struct device *port, gpio_port_pins_t mask, gpio_port_value_t value"
+        ],
+        "gpio.h",
+        true
+    ],
+    [
+        [
+            "int gpio_port_set_bits_raw",
+            "const struct device *port, gpio_port_pins_t pins"
+        ],
+        "gpio.h",
+        true
+    ],
+    [
+        [
+            "int gpio_port_set_bits",
+            "const struct device *port, gpio_port_pins_t pins"
+        ],
+        "gpio.h",
+        true
+    ],
+    [
+        [
+            "int gpio_port_clear_bits_raw",
+            "const struct device *port, gpio_port_pins_t pins"
+        ],
+        "gpio.h",
+        true
+    ],
+    [
+        [
+            "int gpio_port_clear_bits",
+            "const struct device *port, gpio_port_pins_t pins"
+        ],
+        "gpio.h",
+        true
+    ],
+    [
+        [
+            "int gpio_port_toggle_bits",
+            "const struct device *port, gpio_port_pins_t pins"
+        ],
+        "gpio.h",
+        true
+    ],
+    [
+        [
+            "int gpio_port_set_clr_bits_raw",
+            "const struct device *port, gpio_port_pins_t set_pins, gpio_port_pins_t clear_pins"
+        ],
+        "gpio.h",
+        true
+    ],
+    [
+        [
+            "int gpio_port_set_clr_bits",
+            "const struct device *port, gpio_port_pins_t set_pins, gpio_port_pins_t clear_pins"
+        ],
+        "gpio.h",
+        true
+    ],
+    [
+        [
+            "int gpio_pin_get_raw",
+            "const struct device *port, gpio_pin_t pin"
+        ],
+        "gpio.h",
+        true
+    ],
+    [
+        [
+            "int gpio_pin_get",
+            "const struct device *port, gpio_pin_t pin"
+        ],
+        "gpio.h",
+        true
+    ],
+    [
+        [
+            "int gpio_pin_set_raw",
+            "const struct device *port, gpio_pin_t pin, int value"
+        ],
+        "gpio.h",
+        true
+    ],
+    [
+        [
+            "int gpio_pin_set",
+            "const struct device *port, gpio_pin_t pin, int value"
+        ],
+        "gpio.h",
+        true
+    ],
+    [
+        [
+            "int gpio_pin_toggle",
+            "const struct device *port, gpio_pin_t pin"
+        ],
+        "gpio.h",
+        true
+    ],
+    [
+        [
+            "int gpio_get_pending_int",
+            "const struct device *dev"
+        ],
+        "gpio.h",
+        true
+    ],
+    [
+        [
+            "int i2c_configure",
+            "const struct device *dev, uint32_t dev_config"
+        ],
+        "i2c.h",
+        true
+    ],
+    [
+        [
+            "int i2c_get_config",
+            "const struct device *dev, uint32_t *dev_config"
+        ],
+        "i2c.h",
+        true
+    ],
+    [
+        [
+            "int i2c_transfer",
+            "const struct device *dev, struct i2c_msg *msgs, uint8_t num_msgs, uint16_t addr"
+        ],
+        "i2c.h",
+        true
+    ],
+    [
+        [
+            "int i2c_recover_bus",
+            "const struct device *dev"
+        ],
+        "i2c.h",
+        true
+    ],
+    [
+        [
+            "int i2c_target_driver_register",
+            "const struct device *dev"
+        ],
+        "i2c.h",
+        true
+    ],
+    [
+        [
+            "int i2c_target_driver_unregister",
+            "const struct device *dev"
+        ],
+        "i2c.h",
+        true
+    ],
+    [
+        [
             "int reset_status",
             "const struct device *dev, uint32_t id, uint8_t *status"
         ],
@@ -197,6 +413,70 @@
             "const struct device *dev, uint32_t id"
         ],
         "reset.h",
+        true
+    ],
+    [
+        [
+            "int rtc_set_time",
+            "const struct device *dev, const struct rtc_time *timeptr"
+        ],
+        "rtc.h",
+        true
+    ],
+    [
+        [
+            "int rtc_get_time",
+            "const struct device *dev, struct rtc_time *timeptr"
+        ],
+        "rtc.h",
+        true
+    ],
+    [
+        [
+            "int rtc_alarm_get_supported_fields",
+            "const struct device *dev, uint16_t id, uint16_t *mask"
+        ],
+        "rtc.h",
+        true
+    ],
+    [
+        [
+            "int rtc_alarm_set_time",
+            "const struct device *dev, uint16_t id, uint16_t mask, const struct rtc_time *timeptr"
+        ],
+        "rtc.h",
+        true
+    ],
+    [
+        [
+            "int rtc_alarm_get_time",
+            "const struct device *dev, uint16_t id, uint16_t *mask, struct rtc_time *timeptr"
+        ],
+        "rtc.h",
+        true
+    ],
+    [
+        [
+            "int rtc_alarm_is_pending",
+            "const struct device *dev, uint16_t id"
+        ],
+        "rtc.h",
+        true
+    ],
+    [
+        [
+            "int rtc_set_calibration",
+            "const struct device *dev, int32_t calibration"
+        ],
+        "rtc.h",
+        true
+    ],
+    [
+        [
+            "int rtc_get_calibration",
+            "const struct device *dev, int32_t *calibration"
+        ],
+        "rtc.h",
         true
     ],
     [
@@ -2777,174 +3057,6 @@
     ],
     [
         [
-            "int gpio_pin_interrupt_configure",
-            "const struct device *port, gpio_pin_t pin, gpio_flags_t flags"
-        ],
-        "gpio.h",
-        false
-    ],
-    [
-        [
-            "int gpio_pin_configure",
-            "const struct device *port, gpio_pin_t pin, gpio_flags_t flags"
-        ],
-        "gpio.h",
-        false
-    ],
-    [
-        [
-            "int gpio_port_get_direction",
-            "const struct device *port, gpio_port_pins_t map, gpio_port_pins_t *inputs, gpio_port_pins_t *outputs"
-        ],
-        "gpio.h",
-        false
-    ],
-    [
-        [
-            "int gpio_pin_get_config",
-            "const struct device *port, gpio_pin_t pin, gpio_flags_t *flags"
-        ],
-        "gpio.h",
-        false
-    ],
-    [
-        [
-            "int gpio_port_get_raw",
-            "const struct device *port, gpio_port_value_t *value"
-        ],
-        "gpio.h",
-        false
-    ],
-    [
-        [
-            "int gpio_port_get",
-            "const struct device *port, gpio_port_value_t *value"
-        ],
-        "gpio.h",
-        false
-    ],
-    [
-        [
-            "int gpio_port_set_masked_raw",
-            "const struct device *port, gpio_port_pins_t mask, gpio_port_value_t value"
-        ],
-        "gpio.h",
-        false
-    ],
-    [
-        [
-            "int gpio_port_set_masked",
-            "const struct device *port, gpio_port_pins_t mask, gpio_port_value_t value"
-        ],
-        "gpio.h",
-        false
-    ],
-    [
-        [
-            "int gpio_port_set_bits_raw",
-            "const struct device *port, gpio_port_pins_t pins"
-        ],
-        "gpio.h",
-        false
-    ],
-    [
-        [
-            "int gpio_port_set_bits",
-            "const struct device *port, gpio_port_pins_t pins"
-        ],
-        "gpio.h",
-        false
-    ],
-    [
-        [
-            "int gpio_port_clear_bits_raw",
-            "const struct device *port, gpio_port_pins_t pins"
-        ],
-        "gpio.h",
-        false
-    ],
-    [
-        [
-            "int gpio_port_clear_bits",
-            "const struct device *port, gpio_port_pins_t pins"
-        ],
-        "gpio.h",
-        false
-    ],
-    [
-        [
-            "int gpio_port_toggle_bits",
-            "const struct device *port, gpio_port_pins_t pins"
-        ],
-        "gpio.h",
-        false
-    ],
-    [
-        [
-            "int gpio_port_set_clr_bits_raw",
-            "const struct device *port, gpio_port_pins_t set_pins, gpio_port_pins_t clear_pins"
-        ],
-        "gpio.h",
-        false
-    ],
-    [
-        [
-            "int gpio_port_set_clr_bits",
-            "const struct device *port, gpio_port_pins_t set_pins, gpio_port_pins_t clear_pins"
-        ],
-        "gpio.h",
-        false
-    ],
-    [
-        [
-            "int gpio_pin_get_raw",
-            "const struct device *port, gpio_pin_t pin"
-        ],
-        "gpio.h",
-        false
-    ],
-    [
-        [
-            "int gpio_pin_get",
-            "const struct device *port, gpio_pin_t pin"
-        ],
-        "gpio.h",
-        false
-    ],
-    [
-        [
-            "int gpio_pin_set_raw",
-            "const struct device *port, gpio_pin_t pin, int value"
-        ],
-        "gpio.h",
-        false
-    ],
-    [
-        [
-            "int gpio_pin_set",
-            "const struct device *port, gpio_pin_t pin, int value"
-        ],
-        "gpio.h",
-        false
-    ],
-    [
-        [
-            "int gpio_pin_toggle",
-            "const struct device *port, gpio_pin_t pin"
-        ],
-        "gpio.h",
-        false
-    ],
-    [
-        [
-            "int gpio_get_pending_int",
-            "const struct device *dev"
-        ],
-        "gpio.h",
-        false
-    ],
-    [
-        [
             "int haptics_calibrate",
             "const struct device *dev, const uint32_t routine"
         ],
@@ -3045,54 +3157,6 @@
             "uint32_t *supported"
         ],
         "hwinfo.h",
-        false
-    ],
-    [
-        [
-            "int i2c_configure",
-            "const struct device *dev, uint32_t dev_config"
-        ],
-        "i2c.h",
-        false
-    ],
-    [
-        [
-            "int i2c_get_config",
-            "const struct device *dev, uint32_t *dev_config"
-        ],
-        "i2c.h",
-        false
-    ],
-    [
-        [
-            "int i2c_transfer",
-            "const struct device *dev, struct i2c_msg *msgs, uint8_t num_msgs, uint16_t addr"
-        ],
-        "i2c.h",
-        false
-    ],
-    [
-        [
-            "int i2c_recover_bus",
-            "const struct device *dev"
-        ],
-        "i2c.h",
-        false
-    ],
-    [
-        [
-            "int i2c_target_driver_register",
-            "const struct device *dev"
-        ],
-        "i2c.h",
-        false
-    ],
-    [
-        [
-            "int i2c_target_driver_unregister",
-            "const struct device *dev"
-        ],
-        "i2c.h",
         false
     ],
     [
@@ -3557,70 +3621,6 @@
             "const struct device *dev"
         ],
         "retained_mem.h",
-        false
-    ],
-    [
-        [
-            "int rtc_set_time",
-            "const struct device *dev, const struct rtc_time *timeptr"
-        ],
-        "rtc.h",
-        false
-    ],
-    [
-        [
-            "int rtc_get_time",
-            "const struct device *dev, struct rtc_time *timeptr"
-        ],
-        "rtc.h",
-        false
-    ],
-    [
-        [
-            "int rtc_alarm_get_supported_fields",
-            "const struct device *dev, uint16_t id, uint16_t *mask"
-        ],
-        "rtc.h",
-        false
-    ],
-    [
-        [
-            "int rtc_alarm_set_time",
-            "const struct device *dev, uint16_t id, uint16_t mask, const struct rtc_time *timeptr"
-        ],
-        "rtc.h",
-        false
-    ],
-    [
-        [
-            "int rtc_alarm_get_time",
-            "const struct device *dev, uint16_t id, uint16_t *mask, struct rtc_time *timeptr"
-        ],
-        "rtc.h",
-        false
-    ],
-    [
-        [
-            "int rtc_alarm_is_pending",
-            "const struct device *dev, uint16_t id"
-        ],
-        "rtc.h",
-        false
-    ],
-    [
-        [
-            "int rtc_set_calibration",
-            "const struct device *dev, int32_t calibration"
-        ],
-        "rtc.h",
-        false
-    ],
-    [
-        [
-            "int rtc_get_calibration",
-            "const struct device *dev, int32_t *calibration"
-        ],
-        "rtc.h",
         false
     ],
     [

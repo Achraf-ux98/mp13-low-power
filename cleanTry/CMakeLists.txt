@@ -5,6 +5,8 @@ project(cleanTry)
 target_sources(app PRIVATE
   src/main.c
   src/sysram.c
+  drivers/pmic_lp.c
+  drivers/stpmic1.c
 )
 
 zephyr_linker_sources(SECTIONS sysram.ld)

@@ -101,7 +101,7 @@
 				gpio-controller;              /* in zephyr/dts/arm/st/mp13/stm32mp13.dtsi:101 */
 				#gpio-cells = < 0x2 >;        /* in zephyr/dts/arm/st/mp13/stm32mp13.dtsi:102 */
 				clocks = < &rcc 0x768 0x2 >;  /* in zephyr/dts/arm/st/mp13/stm32mp13.dtsi:103 */
-				phandle = < 0x11 >;           /* in zephyr/boards/st/stm32mp135f_dk/stm32mp135f_dk.dts:183 */
+				phandle = < 0x11 >;           /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:7 */
 			};
 
 			/* node '/soc/pin-controller@50002000/gpio@50004000' defined in zephyr/dts/arm/st/mp13/stm32mp13.dtsi:106 */
@@ -325,7 +325,7 @@
 				pinmux = < 0x9e6 >; /* in modules/hal/stm32/dts/st/mp13/stm32mp135faex-pinctrl.dtsi:2041 */
 				bias-pull-up;       /* in modules/hal/stm32/dts/st/mp13/stm32mp135faex-pinctrl.dtsi:2042 */
 				drive-open-drain;   /* in modules/hal/stm32/dts/st/mp13/stm32mp135faex-pinctrl.dtsi:2043 */
-				phandle = < 0xf >;  /* in zephyr/boards/st/stm32mp135f_dk/stm32mp135f_dk.dts:181 */
+				phandle = < 0xf >;  /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:5 */
 			};
 
 			/* node '/soc/pin-controller@50002000/i2c5_scl_pd1' defined in modules/hal/stm32/dts/st/mp13/stm32mp135faex-pinctrl.dtsi:2058 */
@@ -349,7 +349,7 @@
 				pinmux = < 0x326 >; /* in modules/hal/stm32/dts/st/mp13/stm32mp135faex-pinctrl.dtsi:2151 */
 				bias-pull-up;       /* in modules/hal/stm32/dts/st/mp13/stm32mp135faex-pinctrl.dtsi:2152 */
 				drive-open-drain;   /* in modules/hal/stm32/dts/st/mp13/stm32mp135faex-pinctrl.dtsi:2153 */
-				phandle = < 0x10 >; /* in zephyr/boards/st/stm32mp135f_dk/stm32mp135f_dk.dts:181 */
+				phandle = < 0x10 >; /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:5 */
 			};
 
 			/* node '/soc/pin-controller@50002000/i2c5_sda_ph6' defined in modules/hal/stm32/dts/st/mp13/stm32mp135faex-pinctrl.dtsi:2168 */
@@ -749,7 +749,6 @@
 		/* node '/soc/i2c@4c005000' defined in zephyr/dts/arm/st/mp13/stm32mp13.dtsi:301 */
 		i2c4: i2c@4c005000 {
 			compatible = "st,stm32-i2c-v2";               /* in zephyr/dts/arm/st/mp13/stm32mp13.dtsi:302 */
-			clock-frequency = < 0x186a0 >;                /* in zephyr/dts/arm/st/mp13/stm32mp13.dtsi:303 */
 			#address-cells = < 0x1 >;                     /* in zephyr/dts/arm/st/mp13/stm32mp13.dtsi:304 */
 			#size-cells = < 0x0 >;                        /* in zephyr/dts/arm/st/mp13/stm32mp13.dtsi:305 */
 			reg = < 0x4c005000 0x400 >;                   /* in zephyr/dts/arm/st/mp13/stm32mp13.dtsi:306 */
@@ -758,11 +757,219 @@
 			             < 0x0 0x5e 0x2 0xa0 >;           /* in zephyr/dts/arm/st/mp13/stm32mp13.dtsi:308 */
 			interrupt-names = "event",
 			                  "error";                    /* in zephyr/dts/arm/st/mp13/stm32mp13.dtsi:310 */
-			pinctrl-names = "default";                    /* in zephyr/boards/st/stm32mp135f_dk/stm32mp135f_dk.dts:180 */
-			pinctrl-0 = < &i2c4_scl_pe15 &i2c4_sda_pb9 >; /* in zephyr/boards/st/stm32mp135f_dk/stm32mp135f_dk.dts:181 */
-			scl-gpios = < &gpioe 0xf 0x0 >;               /* in zephyr/boards/st/stm32mp135f_dk/stm32mp135f_dk.dts:182 */
-			sda-gpios = < &gpiob 0x9 0x0 >;               /* in zephyr/boards/st/stm32mp135f_dk/stm32mp135f_dk.dts:183 */
-			status = "okay";                              /* in zephyr/boards/st/stm32mp135f_dk/stm32mp135f_dk.dts:184 */
+			pinctrl-names = "default";                    /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:4 */
+			pinctrl-0 = < &i2c4_scl_pe15 &i2c4_sda_pb9 >; /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:5 */
+			scl-gpios = < &gpioe 0xf 0x0 >;               /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:6 */
+			sda-gpios = < &gpiob 0x9 0x0 >;               /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:7 */
+			clock-frequency = < 0x61a80 >;                /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:8 */
+			status = "okay";                              /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:9 */
+
+			/* node '/soc/i2c@4c005000/pmic@33' defined in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:11 */
+			pmic: pmic@33 {
+				compatible = "st,stpmic1"; /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:12 */
+				reg = < 0x33 >;            /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:13 */
+				status = "okay";           /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:14 */
+
+				/* node '/soc/i2c@4c005000/pmic@33/regulators' defined in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:16 */
+				regulators {
+					compatible = "st,stpmic1-regulators"; /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:17 */
+
+					/* node '/soc/i2c@4c005000/pmic@33/regulators/buck1' defined in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:20 */
+					vddcpu: buck1 {
+						regulator-name = "vddcpu";              /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:21 */
+						regulator-min-microvolt = < 0x1312d0 >; /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:22 */
+						regulator-max-microvolt = < 0x149970 >; /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:23 */
+						regulator-always-on;                    /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:24 */
+						regulator-over-current-protection;      /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:25 */
+
+						/* node '/soc/i2c@4c005000/pmic@33/regulators/buck1/lp-stop' defined in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:27 */
+						lp-stop {
+							regulator-suspend-microvolt = < 0x1312d0 >; /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:28 */
+						};
+
+						/* node '/soc/i2c@4c005000/pmic@33/regulators/buck1/lplv-stop' defined in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:30 */
+						lplv-stop {
+							regulator-suspend-microvolt = < 0xdbba0 >; /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:31 */
+						};
+
+						/* node '/soc/i2c@4c005000/pmic@33/regulators/buck1/lplv-stop2' defined in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:33 */
+						lplv-stop2 {
+							regulator-off-in-suspend; /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:34 */
+						};
+
+						/* node '/soc/i2c@4c005000/pmic@33/regulators/buck1/standby-ddr-sr' defined in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:36 */
+						standby-ddr-sr {
+							regulator-off-in-suspend; /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:37 */
+						};
+
+						/* node '/soc/i2c@4c005000/pmic@33/regulators/buck1/standby-ddr-off' defined in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:39 */
+						standby-ddr-off {
+							regulator-off-in-suspend; /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:40 */
+						};
+					};
+
+					/* node '/soc/i2c@4c005000/pmic@33/regulators/buck2' defined in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:45 */
+					vdd_ddr: buck2 {
+						regulator-name = "vdd_ddr";             /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:46 */
+						regulator-min-microvolt = < 0x149970 >; /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:47 */
+						regulator-max-microvolt = < 0x149970 >; /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:48 */
+						regulator-always-on;                    /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:49 */
+						regulator-over-current-protection;      /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:50 */
+
+						/* node '/soc/i2c@4c005000/pmic@33/regulators/buck2/standby-ddr-off' defined in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:52 */
+						standby-ddr-off {
+							regulator-off-in-suspend; /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:53 */
+						};
+					};
+
+					/* node '/soc/i2c@4c005000/pmic@33/regulators/buck3' defined in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:58 */
+					vdd: buck3 {
+						regulator-name = "vdd";                 /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:59 */
+						regulator-min-microvolt = < 0x325aa0 >; /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:60 */
+						regulator-max-microvolt = < 0x325aa0 >; /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:61 */
+						regulator-always-on;                    /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:62 */
+						st,mask-reset;                          /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:63 */
+						regulator-over-current-protection;      /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:64 */
+					};
+
+					/* node '/soc/i2c@4c005000/pmic@33/regulators/buck4' defined in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:68 */
+					vddcore: buck4 {
+						regulator-name = "vddcore";             /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:69 */
+						regulator-min-microvolt = < 0x1312d0 >; /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:70 */
+						regulator-max-microvolt = < 0x1312d0 >; /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:71 */
+						regulator-always-on;                    /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:72 */
+						regulator-over-current-protection;      /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:73 */
+
+						/* node '/soc/i2c@4c005000/pmic@33/regulators/buck4/lplv-stop' defined in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:75 */
+						lplv-stop {
+							regulator-suspend-microvolt = < 0xdbba0 >; /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:76 */
+						};
+
+						/* node '/soc/i2c@4c005000/pmic@33/regulators/buck4/lplv-stop2' defined in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:78 */
+						lplv-stop2 {
+							regulator-suspend-microvolt = < 0xdbba0 >; /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:79 */
+						};
+
+						/* node '/soc/i2c@4c005000/pmic@33/regulators/buck4/standby-ddr-sr' defined in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:81 */
+						standby-ddr-sr {
+							regulator-off-in-suspend; /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:82 */
+						};
+
+						/* node '/soc/i2c@4c005000/pmic@33/regulators/buck4/standby-ddr-off' defined in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:84 */
+						standby-ddr-off {
+							regulator-off-in-suspend; /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:85 */
+						};
+					};
+
+					/* node '/soc/i2c@4c005000/pmic@33/regulators/ldo1' defined in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:90 */
+					vdd_adc: ldo1 {
+						regulator-name = "vdd_adc";             /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:91 */
+						regulator-min-microvolt = < 0x325aa0 >; /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:92 */
+						regulator-max-microvolt = < 0x325aa0 >; /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:93 */
+
+						/* node '/soc/i2c@4c005000/pmic@33/regulators/ldo1/standby-ddr-sr' defined in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:95 */
+						standby-ddr-sr {
+							regulator-off-in-suspend; /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:96 */
+						};
+
+						/* node '/soc/i2c@4c005000/pmic@33/regulators/ldo1/standby-ddr-off' defined in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:98 */
+						standby-ddr-off {
+							regulator-off-in-suspend; /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:99 */
+						};
+					};
+
+					/* node '/soc/i2c@4c005000/pmic@33/regulators/ldo2' defined in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:104 */
+					unused1: ldo2 {
+						regulator-name = "ldo2"; /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:105 */
+					};
+
+					/* node '/soc/i2c@4c005000/pmic@33/regulators/ldo3' defined in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:109 */
+					unused2: ldo3 {
+						regulator-name = "ldo3"; /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:110 */
+					};
+
+					/* node '/soc/i2c@4c005000/pmic@33/regulators/ldo4' defined in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:114 */
+					vdd_usb: ldo4 {
+						regulator-name = "vdd_usb";             /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:115 */
+						regulator-min-microvolt = < 0x325aa0 >; /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:116 */
+						regulator-max-microvolt = < 0x325aa0 >; /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:117 */
+
+						/* node '/soc/i2c@4c005000/pmic@33/regulators/ldo4/standby-ddr-sr' defined in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:119 */
+						standby-ddr-sr {
+							regulator-off-in-suspend; /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:120 */
+						};
+
+						/* node '/soc/i2c@4c005000/pmic@33/regulators/ldo4/standby-ddr-off' defined in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:122 */
+						standby-ddr-off {
+							regulator-off-in-suspend; /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:123 */
+						};
+					};
+
+					/* node '/soc/i2c@4c005000/pmic@33/regulators/ldo5' defined in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:128 */
+					vdd_sd: ldo5 {
+						regulator-name = "vdd_sd";              /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:129 */
+						regulator-min-microvolt = < 0x325aa0 >; /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:130 */
+						regulator-max-microvolt = < 0x325aa0 >; /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:131 */
+						st,regulator-warm-boot-on;              /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:132 */
+
+						/* node '/soc/i2c@4c005000/pmic@33/regulators/ldo5/standby-ddr-sr' defined in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:134 */
+						standby-ddr-sr {
+							regulator-off-in-suspend; /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:135 */
+						};
+
+						/* node '/soc/i2c@4c005000/pmic@33/regulators/ldo5/standby-ddr-off' defined in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:137 */
+						standby-ddr-off {
+							regulator-off-in-suspend; /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:138 */
+						};
+					};
+
+					/* node '/soc/i2c@4c005000/pmic@33/regulators/ldo6' defined in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:143 */
+					v1v8_periph: ldo6 {
+						regulator-name = "v1v8_periph";         /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:144 */
+						regulator-min-microvolt = < 0x1b7740 >; /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:145 */
+						regulator-max-microvolt = < 0x1b7740 >; /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:146 */
+
+						/* node '/soc/i2c@4c005000/pmic@33/regulators/ldo6/standby-ddr-sr' defined in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:148 */
+						standby-ddr-sr {
+							regulator-off-in-suspend; /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:149 */
+						};
+
+						/* node '/soc/i2c@4c005000/pmic@33/regulators/ldo6/standby-ddr-off' defined in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:151 */
+						standby-ddr-off {
+							regulator-off-in-suspend; /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:152 */
+						};
+					};
+
+					/* node '/soc/i2c@4c005000/pmic@33/regulators/vref_ddr' defined in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:157 */
+					vref_ddr: vref_ddr {
+						regulator-name = "vref_ddr"; /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:158 */
+						regulator-always-on;         /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:159 */
+
+						/* node '/soc/i2c@4c005000/pmic@33/regulators/vref_ddr/standby-ddr-sr' defined in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:161 */
+						standby-ddr-sr {
+							regulator-off-in-suspend; /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:162 */
+						};
+
+						/* node '/soc/i2c@4c005000/pmic@33/regulators/vref_ddr/standby-ddr-off' defined in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:164 */
+						standby-ddr-off {
+							regulator-off-in-suspend; /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:165 */
+						};
+					};
+
+					/* node '/soc/i2c@4c005000/pmic@33/regulators/boost' defined in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:170 */
+					bst_out: boost {
+						regulator-name = "bst_out"; /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:171 */
+					};
+
+					/* node '/soc/i2c@4c005000/pmic@33/regulators/pwr_sw2' defined in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:175 */
+					v3v3_sw: pwr_sw2 {
+						regulator-name = "v3v3_sw";             /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:176 */
+						regulator-active-discharge = < 0x1 >;   /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:177 */
+						regulator-min-microvolt = < 0x325aa0 >; /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:178 */
+						regulator-max-microvolt = < 0x325aa0 >; /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:179 */
+					};
+				};
+			};
 		};
 
 		/* node '/soc/i2c@4c006000' defined in zephyr/dts/arm/st/mp13/stm32mp13.dtsi:314 */
@@ -892,7 +1099,8 @@
 			alrm-exti-line = < 0x13 >;         /* in zephyr/dts/arm/st/mp13/stm32mp13.dtsi:363 */
 			clocks = < &rcc 0x740 0x100 >,
 			         < &rcc 0x2 0x1300400 >;   /* in zephyr/boards/st/stm32mp135f_dk/stm32mp135f_dk.dts:332 */
-			status = "okay";                   /* in zephyr/boards/st/stm32mp135f_dk/stm32mp135f_dk.dts:333 */
+			wakeup-source;                     /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:187 */
+			status = "okay";                   /* in gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay:188 */
 		};
 
 		/* node '/soc/dcmipp@5a000000' defined in zephyr/dts/arm/st/mp13/stm32mp135.dtsi:14 */

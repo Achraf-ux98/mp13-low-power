@@ -182,6 +182,12 @@
 /local/home/achraftm/zephyrproject/gettingShitTogether/build/cleanTry/zephyr/drivers/console/CMakeFiles/drivers__console.dir
 /local/home/achraftm/zephyrproject/gettingShitTogether/build/cleanTry/zephyr/drivers/console/CMakeFiles/edit_cache.dir
 /local/home/achraftm/zephyrproject/gettingShitTogether/build/cleanTry/zephyr/drivers/console/CMakeFiles/rebuild_cache.dir
+/local/home/achraftm/zephyrproject/gettingShitTogether/build/cleanTry/zephyr/drivers/gpio/CMakeFiles/drivers__gpio.dir
+/local/home/achraftm/zephyrproject/gettingShitTogether/build/cleanTry/zephyr/drivers/gpio/CMakeFiles/edit_cache.dir
+/local/home/achraftm/zephyrproject/gettingShitTogether/build/cleanTry/zephyr/drivers/gpio/CMakeFiles/rebuild_cache.dir
+/local/home/achraftm/zephyrproject/gettingShitTogether/build/cleanTry/zephyr/drivers/i2c/CMakeFiles/drivers__i2c.dir
+/local/home/achraftm/zephyrproject/gettingShitTogether/build/cleanTry/zephyr/drivers/i2c/CMakeFiles/edit_cache.dir
+/local/home/achraftm/zephyrproject/gettingShitTogether/build/cleanTry/zephyr/drivers/i2c/CMakeFiles/rebuild_cache.dir
 /local/home/achraftm/zephyrproject/gettingShitTogether/build/cleanTry/zephyr/drivers/pinctrl/CMakeFiles/drivers__pinctrl.dir
 /local/home/achraftm/zephyrproject/gettingShitTogether/build/cleanTry/zephyr/drivers/pinctrl/CMakeFiles/edit_cache.dir
 /local/home/achraftm/zephyrproject/gettingShitTogether/build/cleanTry/zephyr/drivers/pinctrl/CMakeFiles/rebuild_cache.dir
@@ -190,6 +196,9 @@
 /local/home/achraftm/zephyrproject/gettingShitTogether/build/cleanTry/zephyr/drivers/reset/CMakeFiles/drivers__reset.dir
 /local/home/achraftm/zephyrproject/gettingShitTogether/build/cleanTry/zephyr/drivers/reset/CMakeFiles/edit_cache.dir
 /local/home/achraftm/zephyrproject/gettingShitTogether/build/cleanTry/zephyr/drivers/reset/CMakeFiles/rebuild_cache.dir
+/local/home/achraftm/zephyrproject/gettingShitTogether/build/cleanTry/zephyr/drivers/rtc/CMakeFiles/drivers__rtc.dir
+/local/home/achraftm/zephyrproject/gettingShitTogether/build/cleanTry/zephyr/drivers/rtc/CMakeFiles/edit_cache.dir
+/local/home/achraftm/zephyrproject/gettingShitTogether/build/cleanTry/zephyr/drivers/rtc/CMakeFiles/rebuild_cache.dir
 /local/home/achraftm/zephyrproject/gettingShitTogether/build/cleanTry/zephyr/drivers/serial/CMakeFiles/drivers__serial.dir
 /local/home/achraftm/zephyrproject/gettingShitTogether/build/cleanTry/zephyr/drivers/serial/CMakeFiles/edit_cache.dir
 /local/home/achraftm/zephyrproject/gettingShitTogether/build/cleanTry/zephyr/drivers/serial/CMakeFiles/rebuild_cache.dir

@@ -82,35 +82,4 @@ events:
       This is free software; see the source for copying conditions.  There is NO
       warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
       
-  -
-    kind: "try_compile-v1"
-    backtrace:
-      - "/usr/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
-      - "/usr/share/cmake-3.28/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
-      - "/usr/share/cmake-3.28/Modules/CheckCCompilerFlag.cmake:51 (cmake_check_compiler_flag)"
-      - "/local/home/achraftm/zephyrproject/zephyr/cmake/modules/extensions.cmake:2492 (check_c_compiler_flag)"
-      - "/local/home/achraftm/zephyrproject/zephyr/cmake/modules/extensions.cmake:1245 (check_compiler_flag)"
-      - "/local/home/achraftm/zephyrproject/zephyr/cmake/modules/extensions.cmake:2531 (zephyr_check_compiler_flag)"
-      - "/local/home/achraftm/zephyrproject/zephyr/cmake/modules/extensions.cmake:2507 (target_cc_option_fallback)"
-      - "/local/home/achraftm/zephyrproject/zephyr/cmake/modules/extensions.cmake:155 (target_cc_option)"
-      - "/local/home/achraftm/zephyrproject/zephyr/CMakeLists.txt:634 (zephyr_cc_option)"
-    directories:
-      source: "/local/home/achraftm/zephyrproject/gettingShitTogether/build/cleanTry/CMakeFiles/CMakeScratch/TryCompile-NEzLAj"
-      binary: "/local/home/achraftm/zephyrproject/gettingShitTogether/build/cleanTry/CMakeFiles/CMakeScratch/TryCompile-NEzLAj"
-    cmakeVariables:
-      CMAKE_C_FLAGS: ""
-      CMAKE_C_FLAGS_DEBUG: "-g"
-      CMAKE_EXE_LINKER_FLAGS: ""
-      CMAKE_MODULE_PATH: "/local/home/achraftm/zephyrproject/zephyr/cmake/modules"
-    buildResult:
-      variable: "check_fmacro_prefix_map__local_home_achraftm_zephyrproject_gettingShitTogether_cleanTry_CMAKE_SOURCE_DIR_C__nostartfiles__nostdlib__isystem___local_home_achraftm_zephyr_sdk_1_0_1_gnu_arm_zephyr_eabi_bin____lib_gcc_arm_zephyr_eabi_14_3_0_include___isystem___local_home_achraftm_zephyr_sdk_1_0_1_gnu_arm_zephyr_eabi_bin____lib_gcc_arm_zephyr_eabi_14_3_0_include___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0__fuse_ld_bfd"
-      cached: true
-      stdout: |
-        Change Dir: '/local/home/achraftm/zephyrproject/gettingShitTogether/build/cleanTry/CMakeFiles/CMakeScratch/TryCompile-NEzLAj'
-        
-        Run Build Command(s): /usr/bin/ninja -v cmTC_b790e
-        [1/2] /local/home/achraftm/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc -Dcheck_fmacro_prefix_map__local_home_achraftm_zephyrproject_gettingShitTogether_cleanTry_CMAKE_SOURCE_DIR_C__nostartfiles__nostdlib__isystem___local_home_achraftm_zephyr_sdk_1_0_1_gnu_arm_zephyr_eabi_bin____lib_gcc_arm_zephyr_eabi_14_3_0_include___isystem___local_home_achraftm_zephyr_sdk_1_0_1_gnu_arm_zephyr_eabi_bin____lib_gcc_arm_zephyr_eabi_14_3_0_include___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0__fuse_ld_bfd  -nostartfiles -nostdlib -isystem "/local/home/achraftm/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/14.3.0/include" -isystem "/local/home/achraftm/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/14.3.0/include" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0 -fuse-ld=bfd   -fmacro-prefix-map=/local/home/achraftm/zephyrproject/gettingShitTogether/cleanTry=CMAKE_SOURCE_DIR -o CMakeFiles/cmTC_b790e.dir/src.c.obj -c /local/home/achraftm/zephyrproject/gettingShitTogether/build/cleanTry/CMakeFiles/CMakeScratch/TryCompile-NEzLAj/src.c
-        [2/2] : && /local/home/achraftm/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc -nostartfiles -nostdlib -isystem "/local/home/achraftm/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/14.3.0/include" -isystem "/local/home/achraftm/zephyr-sdk-1.0.1/gnu/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/14.3.0/include" -Wl,--unresolved-symbols=ignore-in-object-files -Wl,--entry=0 -fuse-ld=bfd  CMakeFiles/cmTC_b790e.dir/src.c.obj -o cmTC_b790e   && :
-        
-      exitCode: 0
 ...

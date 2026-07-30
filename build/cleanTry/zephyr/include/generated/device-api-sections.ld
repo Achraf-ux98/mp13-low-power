@@ -1,7 +1,17 @@
 SECTION_PROLOGUE(device_api_area,,SUBALIGN(4))
 {
+	Z_LINK_ITERABLE(gpio_driver_api);
+	PLACE_SYMBOL_HERE(_gpio_driver_api_ext_end);
+	Z_LINK_ITERABLE(i2c_driver_api);
+	Z_LINK_ITERABLE(i3c_driver_api);
+	PLACE_SYMBOL_HERE(_i3c_driver_api_ext_end);
+	PLACE_SYMBOL_HERE(_i2c_driver_api_ext_end);
+	Z_LINK_ITERABLE(i2c_target_driver_api);
+	PLACE_SYMBOL_HERE(_i2c_target_driver_api_ext_end);
 	Z_LINK_ITERABLE(reset_driver_api);
 	PLACE_SYMBOL_HERE(_reset_driver_api_ext_end);
+	Z_LINK_ITERABLE(rtc_driver_api);
+	PLACE_SYMBOL_HERE(_rtc_driver_api_ext_end);
 	Z_LINK_ITERABLE(shared_irq_driver_api);
 	PLACE_SYMBOL_HERE(_shared_irq_driver_api_ext_end);
 	Z_LINK_ITERABLE(audio_codec_driver_api);
@@ -76,18 +86,10 @@ SECTION_PROLOGUE(device_api_area,,SUBALIGN(4))
 	PLACE_SYMBOL_HERE(_fuel_gauge_driver_api_ext_end);
 	Z_LINK_ITERABLE(gnss_driver_api);
 	PLACE_SYMBOL_HERE(_gnss_driver_api_ext_end);
-	Z_LINK_ITERABLE(gpio_driver_api);
-	PLACE_SYMBOL_HERE(_gpio_driver_api_ext_end);
 	Z_LINK_ITERABLE(haptics_driver_api);
 	PLACE_SYMBOL_HERE(_haptics_driver_api_ext_end);
 	Z_LINK_ITERABLE(hwspinlock_driver_api);
 	PLACE_SYMBOL_HERE(_hwspinlock_driver_api_ext_end);
-	Z_LINK_ITERABLE(i2c_driver_api);
-	Z_LINK_ITERABLE(i3c_driver_api);
-	PLACE_SYMBOL_HERE(_i3c_driver_api_ext_end);
-	PLACE_SYMBOL_HERE(_i2c_driver_api_ext_end);
-	Z_LINK_ITERABLE(i2c_target_driver_api);
-	PLACE_SYMBOL_HERE(_i2c_target_driver_api_ext_end);
 	Z_LINK_ITERABLE(i2s_driver_api);
 	PLACE_SYMBOL_HERE(_i2s_driver_api_ext_end);
 	Z_LINK_ITERABLE(ipm_driver_api);
@@ -128,8 +130,6 @@ SECTION_PROLOGUE(device_api_area,,SUBALIGN(4))
 	PLACE_SYMBOL_HERE(_regulator_driver_api_ext_end);
 	Z_LINK_ITERABLE(retained_mem_driver_api);
 	PLACE_SYMBOL_HERE(_retained_mem_driver_api_ext_end);
-	Z_LINK_ITERABLE(rtc_driver_api);
-	PLACE_SYMBOL_HERE(_rtc_driver_api_ext_end);
 	Z_LINK_ITERABLE(sdhc_driver_api);
 	PLACE_SYMBOL_HERE(_sdhc_driver_api_ext_end);
 	Z_LINK_ITERABLE(sensor_driver_api);

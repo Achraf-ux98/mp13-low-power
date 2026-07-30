@@ -13,6 +13,7 @@ cmake:
      - '/local/home/achraftm/zephyrproject/zephyr/dts/bindings'
     files:
      - '/local/home/achraftm/zephyrproject/zephyr/boards/st/stm32mp135f_dk/stm32mp135f_dk.dts'
+     - '/local/home/achraftm/zephyrproject/gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay'
     include-dirs:
      - '/local/home/achraftm/zephyrproject/modules/hal/ambiq/dts'
      - '/local/home/achraftm/zephyrproject/modules/hal/atmel/include'
@@ -39,6 +40,8 @@ cmake:
      - '/local/home/achraftm/zephyrproject/zephyr/dts/arm'
      - '/local/home/achraftm/zephyrproject/zephyr/dts/arc'
      - '/local/home/achraftm/zephyrproject/zephyr/dts'
+    user-files:
+     - '/local/home/achraftm/zephyrproject/gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay'
   kconfig:
     files:
      - '/local/home/achraftm/zephyrproject/zephyr/boards/st/stm32mp135f_dk/stm32mp135f_dk_defconfig'
