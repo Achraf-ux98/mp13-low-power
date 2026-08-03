@@ -3,12 +3,38 @@
 
 #include "sysram.h"
 
+#define BIT(n) (1u << (n))
+
 #define SYSRAM_START 0x2FFE0000U
 #define SYSRAM_END   0x30000000U
 
 #define DDRCTRL_BASE_ADDR  0x5A003000U
 #define DDRPHYC_BASE_ADDR  0x5A004000U
 #define PWR_BASE_ADDR      0x50001000U
+#define RCC_BASE_ADDR      0x50000000U
+
+#define RCC_MP_SREQSETR_OFFSET 0x100U
+#define RCC_MP_SREQCLRR_OFFSET 0x104U
+#define RCC_MP_CIER_OFFSET     0x200U
+#define RCC_MP_CIFR_OFFSET     0x204U
+#define RCC_PWRLPDLYCR_OFFSET  0x110U
+
+#define PWR_CR1_OFFSET     0x000U
+#define PWR_MPUCR_OFFSET    0x010U
+
+#define PWR_CR1_LPDS       BIT(0)
+#define PWR_CR1_LPCFG      BIT(1)
+#define PWR_CR1_LVDS       BIT(2)
+#define PWR_CR1_STOP2      BIT(3)
+
+#define PWR_MPUCR_PDDS     BIT(0)
+#define PWR_MPUCR_CSSF     BIT(9)
+
+#define RCC_MP_SREQSETR_STPREQ_P0 BIT(0)
+#define RCC_MP_SREQCLRR_STPREQ_P0 BIT(0)
+#define RCC_MP_CIER_WKUPIE        BIT(20)
+#define RCC_MP_CIFR_WKUPF         BIT(20)
+#define RCC_MP_CIFR_MASK          0x00110F1FU
 
 #define DDRCTRL_STAT_OFFSET    0x004U
 #define DDRCTRL_PWRCTL_OFFSET  0x030U
@@ -105,6 +131,8 @@ static inline void mmio_clear_bits32(uint32_t addr, uint32_t mask)
 {
 	mmio_write32(addr, mmio_read32(addr) & ~mask);
 }
+
+static void sysram_cstop_prepare_lp_stop(uint32_t with_pmic_lpcfg);
 
 static HAL_StatusTypeDef ddr_sr_mode_ssr(void)
 {
@@ -363,6 +391,33 @@ void sysram_init(void)
 }
 
 __attribute__((section(".sysram_text"), noinline, used))
+static void sysram_cstop_inner(uint32_t with_pmic_lpcfg)
+{
+	sysram_result.started = 0xC5U;
+	sysram_result.phase = 0x10U;
+
+	sysram_cstop_prepare_lp_stop(with_pmic_lpcfg);
+	sysram_result.phase = 0x11U;
+
+	mmio_set_bits32(PWR_BASE_ADDR + PWR_MPUCR_OFFSET, PWR_MPUCR_CSSF);
+	mmio_clear_bits32(PWR_BASE_ADDR + PWR_MPUCR_OFFSET, PWR_MPUCR_PDDS);
+	mmio_set_bits32(RCC_BASE_ADDR + RCC_MP_SREQSETR_OFFSET, RCC_MP_SREQSETR_STPREQ_P0);
+	sysram_result.phase = 0x12U;
+	sysram_result.entry_stat = mmio_read32(RCC_BASE_ADDR + RCC_MP_CIFR_OFFSET);
+
+	/* Plain CStop (STOP mode): WFI returns on any pending GIC interrupt. */
+	__asm__ volatile("dsb sy\nisb\nwfi" : : : "memory");
+
+	sysram_result.entry_ok = 1U;
+	sysram_result.exit_stat = mmio_read32(RCC_BASE_ADDR + RCC_MP_CIFR_OFFSET);
+	sysram_result.exit_ok = (sysram_result.exit_stat & BIT(20)) ? 1U : 0U;
+	sysram_result.phase = 0x13U;
+	mmio_set_bits32(RCC_BASE_ADDR + RCC_MP_SREQCLRR_OFFSET, RCC_MP_SREQCLRR_STPREQ_P0);
+	sysram_result.phase = 0x14U;
+	sysram_result.finished = 0x5CU;
+}
+
+__attribute__((section(".sysram_text"), noinline, used))
 void sysram_run(void)
 {
 	register uintptr_t old_sp;
@@ -372,6 +427,57 @@ void sysram_run(void)
 	__asm__ volatile("mov sp, %0" : : "r"(new_sp) : "memory");
 
 	ddr_sr_stub(&sysram_result);
+
+	__asm__ volatile("mov sp, %0" : : "r"(old_sp) : "memory");
+}
+
+__attribute__((section(".sysram_text"), noinline, used))
+void sysram_cstop_enter(void)
+{
+	mmio_set_bits32(PWR_BASE_ADDR + PWR_MPUCR_OFFSET, PWR_MPUCR_CSSF);
+	mmio_clear_bits32(PWR_BASE_ADDR + PWR_MPUCR_OFFSET, PWR_MPUCR_PDDS);
+	mmio_clear_bits32(PWR_BASE_ADDR + PWR_CR1_OFFSET,
+			  PWR_CR1_LPDS | PWR_CR1_LPCFG | PWR_CR1_LVDS | PWR_CR1_STOP2);
+	/* Plain CStop mode: keep CR1 low-power mode field cleared. */
+	mmio_set_bits32(PWR_BASE_ADDR + PWR_CR1_OFFSET, 0U);
+	mmio_set_bits32(RCC_BASE_ADDR + RCC_MP_SREQSETR_OFFSET, RCC_MP_SREQSETR_STPREQ_P0);
+	__asm__ volatile("dsb sy\nisb\nwfi" : : : "memory");
+	mmio_set_bits32(RCC_BASE_ADDR + RCC_MP_SREQCLRR_OFFSET, RCC_MP_SREQCLRR_STPREQ_P0);
+}
+
+static void sysram_cstop_prepare_lp_stop(uint32_t with_pmic_lpcfg)
+{
+	uint32_t cr1;
+
+	/*
+	 * Plain CStop (STOP mode): CR1=0, MPUCR=CSSF.
+	 * This is mode 1 in the OP-TEE table and wakes from any GIC interrupt.
+	 * LP_STOP (CR1=LPDS) requires PMIC rail coordination to produce WKUPF;
+	 * skip that until the wake path is fully confirmed.
+	 */
+	cr1 = 0U;
+	(void)with_pmic_lpcfg;
+	mmio_clear_bits32(PWR_BASE_ADDR + PWR_CR1_OFFSET,
+			  PWR_CR1_LPDS | PWR_CR1_LPCFG | PWR_CR1_LVDS | PWR_CR1_STOP2);
+	mmio_set_bits32(PWR_BASE_ADDR + PWR_CR1_OFFSET, cr1);
+
+	/* OP-TEE ordering: clear WKUPF, enable WKUPIE, clear all pending RCC flags. */
+	mmio_set_bits32(RCC_BASE_ADDR + RCC_MP_CIFR_OFFSET, RCC_MP_CIFR_WKUPF);
+	mmio_set_bits32(RCC_BASE_ADDR + RCC_MP_CIER_OFFSET, RCC_MP_CIER_WKUPIE);
+	mmio_write32(RCC_BASE_ADDR + RCC_MP_CIFR_OFFSET, RCC_MP_CIFR_MASK);
+	mmio_clear_bits32(RCC_BASE_ADDR + RCC_PWRLPDLYCR_OFFSET, 0x003FFFFFU);
+	mmio_set_bits32(RCC_BASE_ADDR + RCC_PWRLPDLYCR_OFFSET, 5U);
+}
+
+void sysram_cstop_enter_lp_stop(uint32_t with_pmic_lpcfg)
+{
+	register uintptr_t old_sp;
+	uintptr_t new_sp = (uintptr_t)(sysram_stack + sizeof(sysram_stack));
+
+	__asm__ volatile("mov %0, sp" : "=r"(old_sp));
+	__asm__ volatile("mov sp, %0" : : "r"(new_sp) : "memory");
+
+	sysram_cstop_inner(with_pmic_lpcfg);
 
 	__asm__ volatile("mov sp, %0" : : "r"(old_sp) : "memory");
 }

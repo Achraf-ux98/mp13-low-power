@@ -16,6 +16,8 @@ struct ddr_sr_result {
 
 void sysram_init(void);
 void sysram_run(void);
+void sysram_cstop_enter(void);
+void sysram_cstop_enter_lp_stop(uint32_t with_pmic_lpcfg);
 
 const struct ddr_sr_result *sysram_get_result(void);
 uintptr_t sysram_get_stub_addr(void);
