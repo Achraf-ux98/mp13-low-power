@@ -1970,7 +1970,7 @@ set_target_properties(${DEVICETREE_TARGET}
     "DT_PROP|/gpio_keys|compatible" "gpio-keys"
     "DT_PROP|/gpio_keys|dma-coherent" "False"
     "DT_PROP|/gpio_keys|zephyr,deferred-init" "False"
-    "DT_PROP|/gpio_keys|wakeup-source" "False"
+    "DT_PROP|/gpio_keys|wakeup-source" "True"
     "DT_PROP|/gpio_keys|zephyr,pm-device-runtime-auto" "False"
     "DT_REG|/gpio_keys|NUM" "0"
     "DT_REG|/gpio_keys|ADDR" ""
@@ -1978,7 +1978,8 @@ set_target_properties(${DEVICETREE_TARGET}
     "DT_UNIT_ADDR|/gpio_keys" "NONE"
     "DT_NODE|/gpio_keys/button" TRUE
     "DT_NODELABEL|user_button" "/gpio_keys/button"
-    "DT_PROP|/gpio_keys/button|label" "User 1"
+    "DT_NODELABEL|pf8_wakeup_button" "/gpio_keys/button"
+    "DT_PROP|/gpio_keys/button|label" "PF8 Wake Button"
     "DT_PROP|/gpio_keys/button|zephyr,code" "11"
     "DT_REG|/gpio_keys/button|NUM" "0"
     "DT_REG|/gpio_keys/button|ADDR" ""

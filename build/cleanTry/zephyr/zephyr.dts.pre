@@ -5859,6 +5859,7 @@
 
  gpio_keys {
   compatible = "gpio-keys";
+  wakeup-source;
 
   user_button: button {
    label = "User 1";
@@ -6166,6 +6167,25 @@ csi_interface: &dcmipp {
 # 0 "<command-line>" 2
 # 1 "/local/home/achraftm/zephyrproject/gettingShitTogether/cleanTry/boards/stm32mp135f_dk.overlay" 1
 
+
+
+
+/ {
+ gpio_keys {
+  compatible = "gpio-keys";
+  wakeup-source;
+
+  pf8_wakeup_button: button {
+   label = "PF8 Wake Button";
+   gpios = <&gpiof 8 (1 << 0)>;
+   zephyr,code = <11>;
+  };
+ };
+
+ aliases {
+  sw0 = &pf8_wakeup_button;
+ };
+};
 
 &i2c4 {
  pinctrl-names = "default";

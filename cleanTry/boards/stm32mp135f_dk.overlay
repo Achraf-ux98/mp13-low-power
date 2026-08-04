@@ -1,5 +1,24 @@
 /* SPDX-License-Identifier: Apache-2.0 */
 
+#include <zephyr/dt-bindings/input/input-event-codes.h>
+
+/ {
+	gpio_keys {
+		compatible = "gpio-keys";
+		wakeup-source;
+
+		pf8_wakeup_button: button {
+			label = "PF8 Wake Button";
+			gpios = <&gpiof 8 GPIO_ACTIVE_LOW>;
+			zephyr,code = <INPUT_KEY_0>;
+		};
+	};
+
+	aliases {
+		sw0 = &pf8_wakeup_button;
+	};
+};
+
 &i2c4 {
 	pinctrl-names = "default";
 	pinctrl-0 = <&i2c4_scl_pe15 &i2c4_sda_pb9>;

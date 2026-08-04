@@ -5,12 +5,12 @@ set -euo pipefail
 # 1) build (west, pristine by default)
 # 2) sign image
 # 3) flash via CubeProgrammer
-# 4) open serial monitor on ttyACM0
+# 4) open serial monitor on ttyACM1
 
 APP="cleanTry"
 APP_SET=0
 BOARD="stm32mp135f_dk"
-PORT="/dev/ttyACM0"
+PORT="/dev/ttyACM1"
 BAUD="115200"
 PRISTINE=1
 OPEN_MONITOR=1
@@ -40,7 +40,7 @@ Options:
   -a, --app <name>        App folder under gettingShitTogether
                           If omitted, reuses last successful app (fallback: cleanTry)
   -b, --board <name>      Zephyr board (default: stm32mp135f_dk)
-  -p, --port <device>     Serial device (default: /dev/ttyACM0)
+  -p, --port <device>     Serial device (default: /dev/ttyACM1)
       --baud <rate>       Serial baud (default: 115200)
       --no-pristine       Skip west --pristine
       --no-monitor        Do not open serial monitor after flashing
@@ -49,7 +49,7 @@ Options:
 
 Examples:
   ./flash_and_monitor.sh --app cleanTry
-  ./flash_and_monitor.sh --app cleanTry --port /dev/ttyACM0
+  ./flash_and_monitor.sh --app cleanTry --port /dev/ttyACM1
 EOF
 }
 

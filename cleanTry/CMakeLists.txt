@@ -5,6 +5,7 @@ project(cleanTry)
 target_sources(app PRIVATE
   src/main.c
   src/sysram.c
+  src/wakeup_sources.c
   drivers/pmic_lp.c
   drivers/stpmic1.c
 )

@@ -489,7 +489,7 @@
     "assign",
     [
       "/local/home/achraftm/zephyrproject/gettingShitTogether/cleanTry/prj.conf",
-      10
+      11
     ]
   ],
   [
@@ -803,7 +803,7 @@
     "assign",
     [
       "/local/home/achraftm/zephyrproject/gettingShitTogether/cleanTry/prj.conf",
-      6
+      7
     ]
   ],
   [
@@ -4629,9 +4629,12 @@
     "CONFIG_RTC_ALARM",
     "y",
     "bool",
-    null,
-    "unset",
-    null
+    "y",
+    "assign",
+    [
+      "/local/home/achraftm/zephyrproject/gettingShitTogether/cleanTry/prj.conf",
+      6
+    ]
   ],
   [
     "CONFIG_RTC_UPDATE",
@@ -5191,7 +5194,7 @@
     "assign",
     [
       "/local/home/achraftm/zephyrproject/gettingShitTogether/cleanTry/prj.conf",
-      13
+      14
     ]
   ],
   [

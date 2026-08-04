@@ -1,80 +1,63 @@
-#include <stdint.h>
-
 #include <zephyr/kernel.h>
 #include <zephyr/sys/printk.h>
 
-#include "sysram.h"
+#include "wakeup_sources.h"
 
-#define SYSRAM_START 0x2FFE0000U
-#define SYSRAM_END   0x30000000U
+static void wake_test_enter_idle_window(void)
+{
+	//while (!wakeup_sources_rtc_fired() && !wakeup_sources_button_fired()) {
+		k_cpu_idle();
+	//}
+}
+
+static void wakeup_sources_manual_wake_test(void)
+{
+	int ret;
+
+	printk("\n=== Wake source manual wake test ===\n");
+
+	ret = wakeup_sources_init();
+	printk("wakeup_sources_init() = %d\n", ret);
+	if (ret != 0) {
+		return;
+	}
+
+	ret = wakeup_sources_arm_rtc_alarm(2U);
+	printk("wakeup_sources_arm_rtc_alarm(2) = %d\n", ret);
+	if (ret != 0) {
+		return;
+	}
+
+	printk("rtc pending before wait = %u\n",
+	       (unsigned int)wakeup_sources_rtc_pending());
+
+	wakeup_sources_mask_known_irqs();
+
+	printk("entering Zephyr idle\n");
+	wake_test_enter_idle_window();
+	printk("returned from Zephyr idle\n");
+
+	wakeup_sources_unmask_known_irqs();
+
+	printk("rtc pending after wait = %u\n",
+	       (unsigned int)wakeup_sources_rtc_pending());
+	printk("rtc fired = %u\n",
+	       (unsigned int)wakeup_sources_rtc_fired());
+	printk("button fired = %u\n",
+	       (unsigned int)wakeup_sources_button_fired());
+
+	wakeup_sources_clear_rtc_alarm();
+}
 
 int main(void)
 {
-	const struct ddr_sr_result *result;
-	uintptr_t stub_addr;
-	uintptr_t result_addr;
-	uintptr_t stack_addr;
-	uint32_t t0_ms;
-	uint32_t t1_ms;
-	unsigned int irq_key;
+	printk("\n=== Wake source test ===\n");
 
-	printk("\n=== SYSRAM copy+execute test (module method) ===\n");
-	printk("sysram init              = begin\n");
-	sysram_init();
-	printk("sysram init              = done\n");
-
-	stub_addr = sysram_get_stub_addr();
-	result_addr = sysram_get_result_addr();
-	stack_addr = sysram_get_stack_addr();
-
-	printk("SYSRAM range              = 0x%08x - 0x%08x\n",
-	       (uint32_t)SYSRAM_START,
-	       (uint32_t)(SYSRAM_END - 1U));
-	printk("sysram_text size          = %u bytes\n",
-	       (unsigned int)sysram_get_text_size());
-	printk("stub addr                 = 0x%08x\n", (uint32_t)stub_addr);
-	printk("result addr               = 0x%08x\n", (uint32_t)result_addr);
-	printk("sysram stack addr         = 0x%08x\n", (uint32_t)stack_addr);
-
-	if ((stub_addr < SYSRAM_START) || (stub_addr >= SYSRAM_END)) {
-		printk("ERROR: stub is not in SYSRAM\n");
-	}
-	if ((result_addr < SYSRAM_START) || (result_addr >= SYSRAM_END)) {
-		printk("ERROR: result is not in SYSRAM\n");
-	}
-	if ((stack_addr < SYSRAM_START) || (stack_addr >= SYSRAM_END)) {
-		printk("ERROR: stack is not in SYSRAM\n");
-	}
-
-	printk("\n=== Running SYSRAM DDR self-refresh with LED blinking (5s) ===\n");
-	t0_ms = k_uptime_get_32();
-	printk("timestamp before run      = %u ms\n", t0_ms);
-
-	irq_key = irq_lock();
-	sysram_run();
-	irq_unlock(irq_key);
-
-	t1_ms = k_uptime_get_32();
-	printk("timestamp after run       = %u ms\n", t1_ms);
-	printk("elapsed                   = %u ms\n", t1_ms - t0_ms);
-
-	result = sysram_get_result();
-	printk("result: started=%u phase=%u finished=%u entry_ok=%u exit_ok=%u\n",
-	       result->started,
-	       result->phase,
-	       result->finished,
-	       result->entry_ok,
-	       result->exit_ok);
-	printk("result: entry_stat=0x%08x exit_stat=0x%08x zdata=0x%08x\n",
-	       result->entry_stat,
-	       result->exit_stat,
-	       result->zdata);
+	wakeup_sources_manual_wake_test();
 
 	printk("\n=== Test completed! Continuing normal execution... ===\n");
 
 	while (1) {
 		k_msleep(1000);
 	}
-
-	return 0;
 }
