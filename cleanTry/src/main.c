@@ -4,26 +4,8 @@
 #include <zephyr/kernel.h>
 #include <zephyr/sys/printk.h>
 
+#include "sysram.h"
 #include "wakeup_sources.h"
-
-static void wait_for_wakeup_event(void)
-{
-	while (!wakeup_sources_button_fired() && !wakeup_sources_rtc_fired()) {
-		k_cpu_idle();
-	}
-}
-
-static void configure_lpstop(void)
-{
-	PWR->MPUCR |= PWR_MPUCR_CSSF;     /* clear old flags */
-	PWR->MPUCR &= ~PWR_MPUCR_PDDS;    /* Stop, not Standby */
-
-	PWR->CR1 |= PWR_CR1_LPDS;         /* low-power Stop family */
-	PWR->CR1 &= ~PWR_CR1_STOP2;       /* not Stop2 */
-	PWR->CR1 &= ~PWR_CR1_LVDS;        /* exact LP-Stop, not LPLV-Stop */
-
-	RCC->MP_SREQSETR |= RCC_MP_SREQSETR_STPREQ_P0;
-}
 static void run_wake_test(void)
 {
 	int ret;
@@ -46,11 +28,13 @@ static void run_wake_test(void)
 	       (unsigned int)wakeup_sources_rtc_pending());
 
 	wakeup_sources_mask_known_irqs();
-	configure_lpstop();
 
-	printk("entering Zephyr idle\n");
-	wait_for_wakeup_event();
-	printk("returned from Zephyr idle\n");
+
+	printk("entering SYSRAM DDR run\n");
+	sysram_init();
+	sysram_run();
+
+	printk("returned from SYSRAM DDR run\n");
 
 	wakeup_sources_unmask_known_irqs();
 

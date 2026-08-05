@@ -1,6 +1,11 @@
 #include <stdint.h>
 #include <string.h>
 
+#include <stm32mp135fxx_ca7.h>
+#include <stm32mp13xx_ll_pwr.h>
+#include <stm32mp13xx_ll_rcc.h>
+#include <zephyr/kernel.h>
+
 #include "sysram.h"
 
 #define SYSRAM_START 0x2FFE0000U
@@ -62,19 +67,6 @@
 
 #define STUB_WAIT_TIMEOUT      50000000U
 #define BLINK_HALF_PERIOD_NOPS 200000U
-
-typedef enum {
-	HAL_OK = 0x00U,
-	HAL_ERROR = 0x01U,
-	HAL_TIMEOUT = 0x03U,
-} HAL_StatusTypeDef;
-
-typedef enum {
-	HAL_DDR_SW_SELF_REFRESH_MODE = 0x0U,
-	HAL_DDR_AUTO_SELF_REFRESH_MODE = 0x1U,
-	HAL_DDR_HW_SELF_REFRESH_MODE = 0x2U,
-	HAL_DDR_INVALID_MODE = 0x3U,
-} HAL_DDR_SelfRefreshModeTypeDef;
 
 extern uint8_t __sysram_text_start[];
 extern uint8_t __sysram_text_end[];
@@ -203,7 +195,7 @@ static HAL_StatusTypeDef ddr_sw_self_refresh_out(void)
 }
 
 /* Copied/adapted from HAL_DDR_SR_Entry. */
-static HAL_StatusTypeDef HAL_DDR_SR_Entry(uint32_t *zq0cr0_zdata)
+static HAL_StatusTypeDef sysram_ddr_sr_entry(uint32_t *zq0cr0_zdata)
 {
 	if (zq0cr0_zdata != NULL) {
 		*zq0cr0_zdata = mmio_read32(DDRPHYC_BASE_ADDR + DDRPHYC_ZQ0CR0_OFFSET) & DDRPHYC_ZQ0CR0_ZDATA_Msk;
@@ -219,7 +211,7 @@ static HAL_StatusTypeDef HAL_DDR_SR_Entry(uint32_t *zq0cr0_zdata)
 }
 
 /* Copied/adapted from HAL_DDR_SR_Exit. */
-static HAL_StatusTypeDef HAL_DDR_SR_Exit(void)
+static HAL_StatusTypeDef sysram_ddr_sr_exit(void)
 {
 	HAL_StatusTypeDef ret;
 
@@ -234,7 +226,7 @@ static HAL_StatusTypeDef HAL_DDR_SR_Exit(void)
 }
 
 /* Copied/adapted from HAL_DDR_SR_SetMode. */
-static HAL_StatusTypeDef HAL_DDR_SR_SetMode(HAL_DDR_SelfRefreshModeTypeDef mode)
+static HAL_StatusTypeDef sysram_ddr_sr_set_mode(HAL_DDR_SelfRefreshModeTypeDef mode)
 {
 	HAL_StatusTypeDef ret;
 
@@ -257,7 +249,7 @@ static HAL_StatusTypeDef HAL_DDR_SR_SetMode(HAL_DDR_SelfRefreshModeTypeDef mode)
 }
 
 /* Copied/adapted from HAL_DDR_SR_ReadMode. */
-static HAL_DDR_SelfRefreshModeTypeDef HAL_DDR_SR_ReadMode(void)
+static HAL_DDR_SelfRefreshModeTypeDef sysram_ddr_sr_read_mode(void)
 {
 	return ddr_sr_read_mode();
 }
@@ -294,6 +286,21 @@ static void copy_sysram_sections(void)
 }
 
 __attribute__((section(".sysram_text"), noinline, used))
+void sysram_configure_lpstop(void)
+{
+	PWR->MPUCR |= PWR_MPUCR_CSSF;
+	PWR->MPUCR &= ~PWR_MPUCR_PDDS;
+
+	PWR->CR1 |= PWR_CR1_LPDS;
+	PWR->CR1 &= ~PWR_CR1_STOP2;
+	PWR->CR1 &= ~PWR_CR1_LVDS;
+
+	RCC->MP_SREQSETR |= RCC_MP_SREQSETR_STPREQ_P0;
+
+	k_cpu_idle();
+}
+
+__attribute__((section(".sysram_text"), noinline, used))
 static void ddr_sr_stub(struct ddr_sr_result *result)
 {
 	uint32_t stat;
@@ -304,17 +311,17 @@ static void ddr_sr_stub(struct ddr_sr_result *result)
 	result->started = 1U;
 	result->phase = 1U;
 
-	if (HAL_DDR_SR_SetMode(HAL_DDR_SW_SELF_REFRESH_MODE) != HAL_OK) {
+	if (sysram_ddr_sr_set_mode(HAL_DDR_SW_SELF_REFRESH_MODE) != HAL_OK) {
 		result->phase = 0xE0U;
 		return;
 	}
 
-	if (HAL_DDR_SR_ReadMode() != HAL_DDR_SW_SELF_REFRESH_MODE) {
+	if (sysram_ddr_sr_read_mode() != HAL_DDR_SW_SELF_REFRESH_MODE) {
 		result->phase = 0xE4U;
 		return;
 	}
 
-	ret = HAL_DDR_SR_Entry(&result->zdata);
+	ret = sysram_ddr_sr_entry(&result->zdata);
 	result->phase = 2U;
 	stat = mmio_read32(stat_addr);
 	result->entry_stat = stat;
@@ -338,7 +345,9 @@ static void ddr_sr_stub(struct ddr_sr_result *result)
 		}
 	}
 
-	ret = HAL_DDR_SR_Exit();
+	sysram_configure_lpstop();
+
+	ret = sysram_ddr_sr_exit();
 	result->phase = 4U;
 	stat = mmio_read32(stat_addr);
 	result->exit_stat = stat;
