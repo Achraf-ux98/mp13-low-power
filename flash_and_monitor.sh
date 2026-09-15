@@ -10,7 +10,7 @@ set -euo pipefail
 APP="cleanTry"
 APP_SET=0
 BOARD="stm32mp135f_dk"
-PORT="/dev/ttyACM1"
+PORT="/dev/ttyACM0"
 BAUD="115200"
 PRISTINE=1
 OPEN_MONITOR=1

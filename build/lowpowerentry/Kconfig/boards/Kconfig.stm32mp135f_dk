@@ -1,0 +1,2 @@
+# Load board Kconfig descriptions.
+osource "/local/home/achraftm/zephyrproject/zephyr/boards/st/stm32mp135f_dk/Kconfig.stm32mp135f_dk"
