@@ -33,8 +33,7 @@ int main(void)
 	
 
 
-	/* Fill in return address in backup register 0 for FSBL-A to come back */
-	HAL_RTCEx_BKUPWrite(&RTCHandle_BKUP, RTC_BKP_DR0,(uint32_t) (&main));
+
 	
 	printk("step: backup register written\n\r");
 
@@ -74,6 +73,9 @@ int main(void)
 
 */
 	while (1) {
+		BSP_LED_Toggle(LED_BLUE);
+		k_busy_wait(100000); /* 100 ms */
+		BSP_LED_Toggle(LED_RED);
 	}
 }
 
