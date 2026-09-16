@@ -4,8 +4,11 @@
 #include <zephyr/pm/state.h>
 #include <zephyr/devicetree.h>
 #include <zephyr/drivers/gpio.h>
-
+#include <zephyr/arch/arm/mmu/arm_mem.h>
+#include <zephyr/kernel/mm.h>
 #define USE_DDR
+#define FSBL_SYSRAM_BASE 0x2FFE0000U
+#define FSBL_SYSRAM_SIZE 0x00020000U
 static volatile bool user_button_pressed;
 static const struct gpio_dt_spec user_button = GPIO_DT_SPEC_GET(DT_ALIAS(sw0), gpios);
 
@@ -13,6 +16,7 @@ void SystemClock_Config(void);
 void PeriphCommonClock_Config(void);
 static void MX_GPIO_Init(void);
 void BSP_PB_Callback(Button_TypeDef Button);
+extern void arch_mem_map(void *virt, uintptr_t phys, size_t size, uint32_t flags);
 
 RTC_HandleTypeDef RTCHandle_BKUP;
 void (*p_FsblEntryPoint)(void);
@@ -79,8 +83,17 @@ int main(void)
 	printk("PM: BKP_DR2 jump target = 0x%08x\n", (uint32_t)p_FsblEntryPoint);
 	//irq_key = irq_lock();
 	//irq_unlock(irq_key);
-	HAL_Delay(10000);
-printk("direct FSBL jump is handled from pm_state_set()\n");
+
+	printk("step: fsbl entrypoint loaded\n\r");
+	arch_mem_map((void *)FSBL_SYSRAM_BASE, FSBL_SYSRAM_BASE, FSBL_SYSRAM_SIZE,
+		     K_MEM_ARM_NORMAL_NC | K_MEM_PERM_RW | K_MEM_PERM_EXEC);
+	printk("step: fsbl sysram mapped\n\r");
+	k_busy_wait(1000000);
+		printk("step: fsbl sysram mapped\n\r");
+
+	p_FsblEntryPoint();
+	HAL_Delay(1000);
+	
 
 	//	p_FsblEntryPoint();
 	
