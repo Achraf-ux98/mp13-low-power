@@ -13,7 +13,6 @@ zephyr/linker.cmd: \
   zephyr/include/generated/zephyr/autoconf.h \
   zephyr/include/generated/zephyr/devicetree_generated.h \
   zephyr/include/generated/zephyr/offsets.h \
-  /local/home/achraftm/zephyrproject/gettingShitTogether/lowpowerentry/sysram.ld \
   /local/home/achraftm/zephyrproject/zephyr/arch/arm/core/cortex_m/vector_table_pad.ld \
   /local/home/achraftm/zephyrproject/zephyr/arch/arm/core/swi_tables.ld \
   /local/home/achraftm/zephyrproject/zephyr/arch/arm/core/vector_table.ld \

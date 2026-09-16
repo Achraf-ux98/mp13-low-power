@@ -8156,7 +8156,7 @@
 #define DT_N_S_soc_S_memory_2ffe0000_REG_NUM 1
 #define DT_N_S_soc_S_memory_2ffe0000_REG_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_memory_2ffe0000_REG_IDX_0_VAL_ADDRESS 805175296 /* 0x2ffe0000 */
-#define DT_N_S_soc_S_memory_2ffe0000_REG_IDX_0_VAL_SIZE 114688 /* 0x1c000 */
+#define DT_N_S_soc_S_memory_2ffe0000_REG_IDX_0_VAL_SIZE 131072 /* 0x20000 */
 #define DT_N_S_soc_S_memory_2ffe0000_FOREACH_REG(fn) fn(DT_N_S_soc_S_memory_2ffe0000, 0)
 #define DT_N_S_soc_S_memory_2ffe0000_FOREACH_REG_SEP(fn, sep) fn(DT_N_S_soc_S_memory_2ffe0000, 0)
 #define DT_N_S_soc_S_memory_2ffe0000_FOREACH_REG_VARGS(fn, ...) fn(DT_N_S_soc_S_memory_2ffe0000, 0, __VA_ARGS__)
@@ -8210,11 +8210,11 @@
 	fn(DT_N_S_soc_S_memory_2ffe0000, compatible, 1, __VA_ARGS__)
 #define DT_N_S_soc_S_memory_2ffe0000_P_compatible_LEN 2
 #define DT_N_S_soc_S_memory_2ffe0000_P_compatible_EXISTS 1
-#define DT_N_S_soc_S_memory_2ffe0000_P_reg {805175296 /* 0x2ffe0000 */, 114688 /* 0x1c000 */}
+#define DT_N_S_soc_S_memory_2ffe0000_P_reg {805175296 /* 0x2ffe0000 */, 131072 /* 0x20000 */}
 #define DT_N_S_soc_S_memory_2ffe0000_P_reg_IDX_0_EXISTS 1
 #define DT_N_S_soc_S_memory_2ffe0000_P_reg_IDX_0 805175296
 #define DT_N_S_soc_S_memory_2ffe0000_P_reg_IDX_1_EXISTS 1
-#define DT_N_S_soc_S_memory_2ffe0000_P_reg_IDX_1 114688
+#define DT_N_S_soc_S_memory_2ffe0000_P_reg_IDX_1 131072
 #define DT_N_S_soc_S_memory_2ffe0000_P_reg_EXISTS 1
 #define DT_N_S_soc_S_memory_2ffe0000_P_dma_coherent 0
 #define DT_N_S_soc_S_memory_2ffe0000_P_dma_coherent_EXISTS 1

@@ -4,7 +4,7 @@ MEMORY
 {
     FLASH (rx) : ORIGIN = (0xc0000000 + 0x0), LENGTH = (262144*1K - 0x0 - 0x0)
     RAM (wx) : ORIGIN = (3489660928), LENGTH = (268435456)
-    SYSRAM ( rw ) : ORIGIN = (805175296), LENGTH = (114688) DDR_CODE ( rw ) : ORIGIN = (3221225472), LENGTH = (268435456) DDR_DATA ( rw ) : ORIGIN = (3489660928), LENGTH = (268435456) ETH_SRAM ( rw ) : ORIGIN = (805289984), LENGTH = (16384)
+    SYSRAM ( rw ) : ORIGIN = (805175296), LENGTH = (131072) DDR_CODE ( rw ) : ORIGIN = (3221225472), LENGTH = (268435456) DDR_DATA ( rw ) : ORIGIN = (3489660928), LENGTH = (268435456) ETH_SRAM ( rw ) : ORIGIN = (805289984), LENGTH = (16384)
     IDT_LIST (wx) : ORIGIN = 0xFFFF8000, LENGTH = 32K
 }
 ENTRY("__start")
@@ -446,35 +446,6 @@ ztest :
  sys_mem_blocks_ptr_area : ALIGN_WITH_INPUT { _sys_mem_blocks_ptr_list_start = .; *(SORT_BY_NAME(._sys_mem_blocks_ptr.static.*)); _sys_mem_blocks_ptr_list_end = .;; } > RAM AT > FLASH
  net_buf_pool_area : ALIGN_WITH_INPUT { _net_buf_pool_list_start = .; KEEP(*(SORT_BY_NAME(._net_buf_pool.static.*))); _net_buf_pool_list_end = .;; } > RAM AT > FLASH
     __data_region_end = .;
-.sysram_text :
-{
- . = ALIGN(4);
- __sysram_text_start = .;
- KEEP(*(.sysram_text))
- KEEP(*(.sysram_text.*))
- . = ALIGN(4);
- __sysram_text_end = .;
-} > SYSRAM AT > FLASH
-__sysram_text_load_start = LOADADDR(.sysram_text);
-.sysram_data :
-{
- . = ALIGN(4);
- __sysram_data_start = .;
- KEEP(*(.sysram_data))
- KEEP(*(.sysram_data.*))
- . = ALIGN(4);
- __sysram_data_end = .;
-} > SYSRAM AT > FLASH
-__sysram_data_load_start = LOADADDR(.sysram_data);
-.sysram_bss (NOLOAD) :
-{
- . = ALIGN(8);
- __sysram_bss_start = .;
- KEEP(*(.sysram_bss))
- KEEP(*(.sysram_bss.*))
- . = ALIGN(8);
- __sysram_bss_end = .;
-} > SYSRAM AT > SYSRAM
 .intList :
 {
  KEEP(*(.irq_info*))

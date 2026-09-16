@@ -40,7 +40,7 @@
 			compatible = "zephyr,memory-region",
 			             "mmio-sram";            /* in zephyr/dts/arm/st/mp13/stm32mp13.dtsi:58 */
 			zephyr,memory-region = "SYSRAM";     /* in zephyr/dts/arm/st/mp13/stm32mp13.dtsi:59 */
-			reg = < 0x2ffe0000 0x1c000 >;        /* in zephyr/boards/st/stm32mp135f_dk/stm32mp135f_dk.dts:147 */
+			reg = < 0x2ffe0000 0x20000 >;        /* in zephyr/boards/st/stm32mp135f_dk/stm32mp135f_dk.dts:147 */
 		};
 
 		/* node '/soc/serial@40010000' defined in zephyr/dts/arm/st/mp13/stm32mp13.dtsi:63 */

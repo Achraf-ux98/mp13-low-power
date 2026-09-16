@@ -5,8 +5,6 @@
 #include <zephyr/devicetree.h>
 #include <zephyr/drivers/gpio.h>
 
-#include "sysram.h"
-
 #define USE_DDR
 static volatile bool user_button_pressed;
 static const struct gpio_dt_spec user_button = GPIO_DT_SPEC_GET(DT_ALIAS(sw0), gpios);
@@ -25,10 +23,11 @@ void wokeup(void)
 
 {
 		uint32_t current_sp;
+		uint32_t fsbl_saved_sp;
 
 		__asm volatile ("mov %0, sp" : "=r"(current_sp));
-		*(volatile uint32_t *)0x5c00a110U = current_sp;
-		printk("LR = 0x%08x\n", current_sp);
+		fsbl_saved_sp = *(volatile uint32_t *)0x5c00a110U;
+		printk("SP = 0x%08x, FSBL saved SP = 0x%08x\n", current_sp, fsbl_saved_sp);
 	}
         
 	
@@ -44,8 +43,6 @@ void wokeup(void)
 int main(void)
 {
 	uint32_t count = 0;
-	unsigned int irq_key;
-
 	SystemClock_Config();
 
 	HAL_RTC_Init(&RTCHandle_BKUP);
@@ -59,11 +56,14 @@ int main(void)
 	
 
 
-	HAL_RTCEx_BKUPWrite(&RTCHandle_BKUP, RTC_BKP_DR0, (uint32_t)(&main));
+	/* Fill in return address in backup register 0 for FSBL-A to come back */
+	HAL_RTCEx_BKUPWrite(&RTCHandle_BKUP, RTC_BKP_DR0,(uint32_t) (&main));
+	
+	printk("step: backup register written\n\r");
 
 	while (count < 6) {
 		BSP_LED_Toggle(LED_BLUE);
-		k_busy_wait(1000000); /* 100 ms */
+		k_busy_wait(100000); /* 100 ms */
 		BSP_LED_Toggle(LED_RED);
 		count++;
 	}
@@ -75,22 +75,12 @@ int main(void)
 	HAL_PWR_EnableWakeUpPin(PWR_WAKEUP_PIN1_LOW);
 	IRQ_Enable(MPU_WAKEUP_PIN_IRQn);
 
-		{
-		uint32_t current_sp;
-
-		__asm volatile ("mov %0, sp" : "=r"(current_sp));
-		*(volatile uint32_t *)0x5c00a110U = current_sp;
-	}
-        
-	
 	p_FsblEntryPoint = (void *)(HAL_RTCEx_BKUPRead(&RTCHandle_BKUP, RTC_BKP_DR2));
 	printk("PM: BKP_DR2 jump target = 0x%08x\n", (uint32_t)p_FsblEntryPoint);
-	sysram_init();
 	//irq_key = irq_lock();
-	//sysram_run();
 	//irq_unlock(irq_key);
 	HAL_Delay(10000);
-printk("out of sysram_run()\n");
+printk("direct FSBL jump is handled from pm_state_set()\n");
 
 	//	p_FsblEntryPoint();
 	

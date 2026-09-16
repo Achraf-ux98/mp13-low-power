@@ -14,7 +14,6 @@ zephyr_include_directories(
 
 target_sources(app PRIVATE
 	src/main.c
-	src/sysram.c
 	${ZEPHYR_BASE}/../modules/hal/stm32/stm32cube/stm32mp13xx/drivers/src/stm32mp13xx_hal_pwr.c
 	${ZEPHYR_BASE}/../modules/hal/stm32/stm32cube/stm32mp13xx/drivers/src/stm32mp13xx_hal_pwr_ex.c
 	${ZEPHYR_BASE}/../modules/hal/stm32/stm32cube/stm32mp13xx/drivers/src/stm32mp13xx_hal_gpio.c
@@ -44,5 +43,3 @@ target_compile_definitions(app PRIVATE
 	DDR_TYPE_DDR3_4Gb
 	HAL_BSEC_MODULE_ENABLED
 )
-
-zephyr_linker_sources(SECTIONS sysram.ld)

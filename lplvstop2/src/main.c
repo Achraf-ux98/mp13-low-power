@@ -20,7 +20,9 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include <zephyr/arch/arm/mmu/arm_mem.h>
 #include <zephyr/kernel.h>
+#include <zephyr/kernel/mm.h>
 #include <zephyr/sys/printk.h>
 
 /* Private includes ----------------------------------------------------------*/
@@ -36,6 +38,8 @@
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
 #define USE_DDR
+#define FSBL_SYSRAM_BASE 0x2FFE0000U
+#define FSBL_SYSRAM_SIZE 0x00020000U
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -57,6 +61,7 @@ void SystemClock_Config(void);
 void PeriphCommonClock_Config(void);
 static void MX_GPIO_Init(void);
 static void PrepareFsblStackHandoff(void);
+extern void arch_mem_map(void *virt, uintptr_t phys, size_t size, uint32_t flags);
 RTC_HandleTypeDef RTCHandle_BKUP;
 void (*p_FsblEntryPoint)(void); /* Entry point of the FSBL-A low power service */
 
@@ -148,9 +153,9 @@ int main(void)
 		/* USER CODE BEGIN 3 */
 		/* Toggle LED_BLUE */
 		BSP_LED_Toggle(LED_BLUE);
-		HAL_Delay(1000);
+		HAL_Delay(100);
 		BSP_LED_Toggle(LED_RED);
-		HAL_Delay(1000);
+		HAL_Delay(100);
 		count++;
 
 	}
@@ -166,12 +171,16 @@ int main(void)
 	HAL_PWR_EnableWakeUpPin(PWR_WAKEUP_PIN1_LOW);
 	IRQ_Enable(MPU_WAKEUP_PIN_IRQn);
 	printk("step: wakeup source enabled\n\r");
-	PrepareFsblStackHandoff();
+	//PrepareFsblStackHandoff();
   
 	/* Print the bootloader-provided backup register 2 value before using it. */
 	p_FsblEntryPoint = (void *)(HAL_RTCEx_BKUPRead(&RTCHandle_BKUP, RTC_BKP_DR2));
 	printk("step: backup register 2 value = 0x%08x\n\r", (uint32_t)p_FsblEntryPoint);
 	printk("step: fsbl entrypoint loaded\n\r");
+	arch_mem_map((void *)FSBL_SYSRAM_BASE, FSBL_SYSRAM_BASE, FSBL_SYSRAM_SIZE,
+		     K_MEM_ARM_NORMAL_NC | K_MEM_PERM_RW | K_MEM_PERM_EXEC);
+	printk("step: fsbl sysram mapped\n\r");
+HAL_Delay(1000);
 	p_FsblEntryPoint();
 
 	/* This code will never be reached in this application */

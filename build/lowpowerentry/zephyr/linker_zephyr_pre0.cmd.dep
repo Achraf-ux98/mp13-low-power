@@ -83,7 +83,6 @@ linker_zephyr_pre0.cmd: \
  /local/home/achraftm/zephyrproject/zephyr/include/zephyr/linker/cplusplus-ram.ld \
  /local/home/achraftm/zephyrproject/gettingShitTogether/build/lowpowerentry/zephyr/include/generated/snippets-data-sections.ld \
  /local/home/achraftm/zephyrproject/gettingShitTogether/build/lowpowerentry/zephyr/include/generated/snippets-sections.ld \
- /local/home/achraftm/zephyrproject/zephyr/include/../../gettingShitTogether/lowpowerentry/sysram.ld \
  /local/home/achraftm/zephyrproject/zephyr/include/zephyr/linker/intlist.ld \
  /local/home/achraftm/zephyrproject/zephyr/include/zephyr/linker/debug-sections.ld \
  /local/home/achraftm/zephyrproject/zephyr/include/zephyr/linker/common-noinit.ld \
