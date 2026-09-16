@@ -9,11 +9,13 @@ set(CUBE_CMSIS_DIR ${CUBE_ROOT}/Drivers/CMSIS/Device/ST/STM32MP13xx/Include)
 set(CUBE_BSP_APP_INC ${CUBE_ROOT}/Projects/STM32MP135C-DK/Applications/Low_power_LPLV_Stop2/BSP_BasicTemplates_low_power/Inc)
 
 zephyr_include_directories(
+	${CMAKE_CURRENT_SOURCE_DIR}
 	${CUBE_BSP_DIR}
 )
 
 target_sources(app PRIVATE
 	src/main.c
+	src/wakeWrap.c
 	${ZEPHYR_BASE}/../modules/hal/stm32/stm32cube/stm32mp13xx/drivers/src/stm32mp13xx_hal_pwr.c
 	${ZEPHYR_BASE}/../modules/hal/stm32/stm32cube/stm32mp13xx/drivers/src/stm32mp13xx_hal_pwr_ex.c
 	${ZEPHYR_BASE}/../modules/hal/stm32/stm32cube/stm32mp13xx/drivers/src/stm32mp13xx_hal_gpio.c
