@@ -1,0 +1,9 @@
+/local/home/achraftm/STM32CubeMP13/Drivers/STM32MP13xx_HAL_Driver/Src/stm32mp13xx_hal_dma_ex.c:583:13:DMA_MultiBufferSetConfig	24	static
+/local/home/achraftm/STM32CubeMP13/Drivers/STM32MP13xx_HAL_Driver/Src/stm32mp13xx_hal_dma_ex.c:124:19:HAL_DMAEx_MultiBufferStart	24	static
+/local/home/achraftm/STM32CubeMP13/Drivers/STM32MP13xx_HAL_Driver/Src/stm32mp13xx_hal_dma_ex.c:202:19:HAL_DMAEx_MultiBufferStart_IT	24	static
+/local/home/achraftm/STM32CubeMP13/Drivers/STM32MP13xx_HAL_Driver/Src/stm32mp13xx_hal_dma_ex.c:307:19:HAL_DMAEx_ChangeMemory	0	static
+/local/home/achraftm/STM32CubeMP13/Drivers/STM32MP13xx_HAL_Driver/Src/stm32mp13xx_hal_dma_ex.c:330:19:HAL_DMAEx_ConfigMuxSync	16	static
+/local/home/achraftm/STM32CubeMP13/Drivers/STM32MP13xx_HAL_Driver/Src/stm32mp13xx_hal_dma_ex.c:397:19:HAL_DMAEx_ConfigMuxRequestGenerator	16	static
+/local/home/achraftm/STM32CubeMP13/Drivers/STM32MP13xx_HAL_Driver/Src/stm32mp13xx_hal_dma_ex.c:463:19:HAL_DMAEx_EnableMuxRequestGenerator	8	static
+/local/home/achraftm/STM32CubeMP13/Drivers/STM32MP13xx_HAL_Driver/Src/stm32mp13xx_hal_dma_ex.c:490:19:HAL_DMAEx_DisableMuxRequestGenerator	8	static
+/local/home/achraftm/STM32CubeMP13/Drivers/STM32MP13xx_HAL_Driver/Src/stm32mp13xx_hal_dma_ex.c:517:6:HAL_DMAEx_MUX_IRQHandler	8	static

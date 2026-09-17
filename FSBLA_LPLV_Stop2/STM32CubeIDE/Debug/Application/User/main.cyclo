@@ -1,0 +1,7 @@
+/local/home/achraftm/STM32CubeMP13/Projects/STM32MP135C-DK/Applications/Low_power_LPLV_Stop2/FSBLA_LPLV_Stop2/Src/main.c:106:6:lp_enter	1
+/local/home/achraftm/STM32CubeMP13/Projects/STM32MP135C-DK/Applications/Low_power_LPLV_Stop2/FSBLA_LPLV_Stop2/Src/main.c:141:6:lp_exit	2
+/local/home/achraftm/STM32CubeMP13/Projects/STM32MP135C-DK/Applications/Low_power_LPLV_Stop2/FSBLA_LPLV_Stop2/Src/main.c:555:6:HAL_SD_RxCpltCallback	2
+/local/home/achraftm/STM32CubeMP13/Projects/STM32MP135C-DK/Applications/Low_power_LPLV_Stop2/FSBLA_LPLV_Stop2/Src/main.c:567:6:Error_Handler	1
+/local/home/achraftm/STM32CubeMP13/Projects/STM32MP135C-DK/Applications/Low_power_LPLV_Stop2/FSBLA_LPLV_Stop2/Src/main.c:432:6:SystemClock_Config	1
+/local/home/achraftm/STM32CubeMP13/Projects/STM32MP135C-DK/Applications/Low_power_LPLV_Stop2/FSBLA_LPLV_Stop2/Src/main.c:194:5:main	9
+/local/home/achraftm/STM32CubeMP13/Projects/STM32MP135C-DK/Applications/Low_power_LPLV_Stop2/FSBLA_LPLV_Stop2/Src/main.c:589:6:assert_failed	1

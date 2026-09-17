@@ -1,0 +1,10 @@
+../../../../../../../Drivers/CMSIS/Core_A/Include/cmsis_gcc.h:865:22:__FPU_Enable	1
+/local/home/achraftm/STM32CubeMP13/Drivers/CMSIS/Device/ST/STM32MP13xx/Source/Templates/system_stm32mp13xx_A7.c:148:17:GetPLL1PClockFreq	4
+/local/home/achraftm/STM32CubeMP13/Drivers/CMSIS/Device/ST/STM32MP13xx/Source/Templates/system_stm32mp13xx_A7.c:200:13:SystemInit_IRQ_ErrorHandler	1
+/local/home/achraftm/STM32CubeMP13/Drivers/CMSIS/Device/ST/STM32MP13xx/Source/Templates/system_stm32mp13xx_A7.c:208:13:SystemInit_Interrupts_SoftIRQn_Handler	1
+/local/home/achraftm/STM32CubeMP13/Drivers/CMSIS/Device/ST/STM32MP13xx/Source/Templates/system_stm32mp13xx_A7.c:215:6:SecurePhysicalTimer_IRQHandler	1
+/local/home/achraftm/STM32CubeMP13/Drivers/CMSIS/Device/ST/STM32MP13xx/Source/Templates/system_stm32mp13xx_A7.c:282:41:IRQ_Handler	2
+/local/home/achraftm/STM32CubeMP13/Drivers/CMSIS/Device/ST/STM32MP13xx/Source/Templates/system_stm32mp13xx_A7.c:345:32:ZeroBss	1
+/local/home/achraftm/STM32CubeMP13/Drivers/CMSIS/Device/ST/STM32MP13xx/Source/Templates/system_stm32mp13xx_A7.c:374:6:SystemInit	10
+/local/home/achraftm/STM32CubeMP13/Drivers/CMSIS/Device/ST/STM32MP13xx/Source/Templates/system_stm32mp13xx_A7.c:441:6:SystemInit_cpu1	9
+/local/home/achraftm/STM32CubeMP13/Drivers/CMSIS/Device/ST/STM32MP13xx/Source/Templates/system_stm32mp13xx_A7.c:519:6:SystemCoreClockUpdate	7

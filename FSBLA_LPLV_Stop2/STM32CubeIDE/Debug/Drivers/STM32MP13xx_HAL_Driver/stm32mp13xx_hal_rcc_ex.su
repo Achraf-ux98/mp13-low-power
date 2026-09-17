@@ -1,0 +1,8 @@
+/local/home/achraftm/STM32CubeMP13/Drivers/STM32MP13xx_HAL_Driver/Src/stm32mp13xx_hal_rcc_ex.c:83:19:RCCEx_PLL2_Config	16	static
+/local/home/achraftm/STM32CubeMP13/Drivers/STM32MP13xx_HAL_Driver/Src/stm32mp13xx_hal_rcc_ex.c:259:19:RCCEx_PLL3_Config	16	static
+/local/home/achraftm/STM32CubeMP13/Drivers/STM32MP13xx_HAL_Driver/Src/stm32mp13xx_hal_rcc_ex.c:429:19:RCCEx_PLL4_Config	16	static
+/local/home/achraftm/STM32CubeMP13/Drivers/STM32MP13xx_HAL_Driver/Src/stm32mp13xx_hal_rcc_ex.c:638:19:HAL_RCCEx_PeriphCLKConfig	304	static
+/local/home/achraftm/STM32CubeMP13/Drivers/STM32MP13xx_HAL_Driver/Src/stm32mp13xx_hal_rcc_ex.c:2029:6:HAL_RCCEx_GetPeriphCLKConfig	0	static
+/local/home/achraftm/STM32CubeMP13/Drivers/STM32MP13xx_HAL_Driver/Src/stm32mp13xx_hal_rcc_ex.c:2146:6:HAL_RCCEx_EnableLSECSS	0	static
+/local/home/achraftm/STM32CubeMP13/Drivers/STM32MP13xx_HAL_Driver/Src/stm32mp13xx_hal_rcc_ex.c:2159:6:HAL_RCCEx_DisableLSECSS	0	static
+/local/home/achraftm/STM32CubeMP13/Drivers/STM32MP13xx_HAL_Driver/Src/stm32mp13xx_hal_rcc_ex.c:2175:10:HAL_RCCEx_GetPeriphCLKFreq	56	static

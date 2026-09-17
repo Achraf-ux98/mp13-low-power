@@ -1,0 +1,8 @@
+../../../../../../../Drivers/CMSIS/Core_A/Include/core_ca.h:2065:21:MMU_APSection	12
+../../../../../../../Drivers/CMSIS/Core_A/Include/core_ca.h:2195:21:MMU_APPage	12
+../../../../../../../Drivers/CMSIS/Core_A/Include/core_ca.h:2273:21:MMU_MemorySection	10
+../../../../../../../Drivers/CMSIS/Core_A/Include/core_ca.h:2334:21:MMU_MemoryPage	11
+../../../../../../../Drivers/CMSIS/Core_A/Include/core_ca.h:2401:21:MMU_GetSectionDescriptor	1
+../../../../../../../Drivers/CMSIS/Core_A/Include/core_ca.h:2428:21:MMU_GetPageDescriptor	3
+../../../../../../../Drivers/CMSIS/Core_A/Include/core_ca.h:2511:22:MMU_TTPage4k	2
+/local/home/achraftm/STM32CubeMP13/Drivers/CMSIS/Device/ST/STM32MP13xx/Source/Templates/mmu_stm32mp13xx.c:147:6:MMU_CreateTranslationTable	17

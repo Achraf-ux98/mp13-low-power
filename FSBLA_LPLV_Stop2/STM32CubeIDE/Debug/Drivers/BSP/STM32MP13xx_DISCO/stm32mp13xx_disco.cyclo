@@ -1,0 +1,11 @@
+/local/home/achraftm/STM32CubeMP13/Drivers/BSP/STM32MP13xx_DISCO/stm32mp13xx_disco.c:162:10:BSP_GetVersion	1
+/local/home/achraftm/STM32CubeMP13/Drivers/BSP/STM32MP13xx_DISCO/stm32mp13xx_disco.c:292:9:BSP_LED_On	2
+/local/home/achraftm/STM32CubeMP13/Drivers/BSP/STM32MP13xx_DISCO/stm32mp13xx_disco.c:321:9:BSP_LED_Off	2
+/local/home/achraftm/STM32CubeMP13/Drivers/BSP/STM32MP13xx_DISCO/stm32mp13xx_disco.c:196:9:BSP_LED_Init	4
+/local/home/achraftm/STM32CubeMP13/Drivers/BSP/STM32MP13xx_DISCO/stm32mp13xx_disco.c:268:9:BSP_LED_DeInit	1
+/local/home/achraftm/STM32CubeMP13/Drivers/BSP/STM32MP13xx_DISCO/stm32mp13xx_disco.c:350:9:BSP_LED_Toggle	2
+/local/home/achraftm/STM32CubeMP13/Drivers/BSP/STM32MP13xx_DISCO/stm32mp13xx_disco.c:171:6:BSP_Error_Handler	1
+/local/home/achraftm/STM32CubeMP13/Drivers/BSP/STM32MP13xx_DISCO/stm32mp13xx_disco.c:381:9:BSP_LED_GetState	1
+/local/home/achraftm/STM32CubeMP13/Drivers/BSP/STM32MP13xx_DISCO/stm32mp13xx_disco.c:410:9:BSP_PB_Init	6
+/local/home/achraftm/STM32CubeMP13/Drivers/BSP/STM32MP13xx_DISCO/stm32mp13xx_disco.c:498:9:BSP_PB_DeInit	5
+/local/home/achraftm/STM32CubeMP13/Drivers/BSP/STM32MP13xx_DISCO/stm32mp13xx_disco.c:549:9:BSP_PB_GetState	1

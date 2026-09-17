@@ -16,7 +16,7 @@ int main(void)
 
 	HAL_RTC_Init(&RTCHandle_BKUP);
 	printk("step: backup register written\n\r");
-	HAL_RTCEx_BKUPWrite(&RTCHandle_BKUP, RTC_BKP_DR0,(uint32_t) (&main));
+	//HAL_RTCEx_BKUPWrite(&RTCHandle_BKUP, RTC_BKP_DR0,(uint32_t) (&main));
 
 	while (count < 6) {
 		BSP_LED_Toggle(LED_BLUE);
@@ -31,7 +31,6 @@ int main(void)
 	HAL_PWR_EnableWakeUpPinIT(PWR_WAKEUP_PIN1);
 	HAL_PWR_EnableWakeUpPin(PWR_WAKEUP_PIN1_LOW);
 	IRQ_Enable(MPU_WAKEUP_PIN_IRQn);
-	wokeup();
 	HAL_Delay(1000);
 
 	while (1) {

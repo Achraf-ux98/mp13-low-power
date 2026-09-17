@@ -1,0 +1,2 @@
+# Load Zephyr board defconfig descriptions.
+osource "/local/home/achraftm/zephyrproject/zephyr/boards/st/stm32mp135f_dk/Kconfig.defconfig"

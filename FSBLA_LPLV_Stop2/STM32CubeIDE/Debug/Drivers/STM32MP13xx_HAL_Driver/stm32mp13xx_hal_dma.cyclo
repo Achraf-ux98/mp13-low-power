@@ -1,0 +1,17 @@
+/local/home/achraftm/STM32CubeMP13/Drivers/STM32MP13xx_HAL_Driver/Src/stm32mp13xx_hal_dma.c:1357:13:DMA_SetConfig	3
+/local/home/achraftm/STM32CubeMP13/Drivers/STM32MP13xx_HAL_Driver/Src/stm32mp13xx_hal_dma.c:1405:17:DMA_CalcBaseAndBitshift	2
+/local/home/achraftm/STM32CubeMP13/Drivers/STM32MP13xx_HAL_Driver/Src/stm32mp13xx_hal_dma.c:1433:26:DMA_CheckFifoParam	16
+/local/home/achraftm/STM32CubeMP13/Drivers/STM32MP13xx_HAL_Driver/Src/stm32mp13xx_hal_dma.c:1527:13:DMA_CalcDMAMUXChannelBaseAndMask	3
+/local/home/achraftm/STM32CubeMP13/Drivers/STM32MP13xx_HAL_Driver/Src/stm32mp13xx_hal_dma.c:1562:13:DMA_CalcDMAMUXRequestGenBaseAndMask	3
+/local/home/achraftm/STM32CubeMP13/Drivers/STM32MP13xx_HAL_Driver/Src/stm32mp13xx_hal_dma.c:174:19:HAL_DMA_Init	59
+/local/home/achraftm/STM32CubeMP13/Drivers/STM32MP13xx_HAL_Driver/Src/stm32mp13xx_hal_dma.c:374:19:HAL_DMA_DeInit	4
+/local/home/achraftm/STM32CubeMP13/Drivers/STM32MP13xx_HAL_Driver/Src/stm32mp13xx_hal_dma.c:493:19:HAL_DMA_Start	5
+/local/home/achraftm/STM32CubeMP13/Drivers/STM32MP13xx_HAL_Driver/Src/stm32mp13xx_hal_dma.c:549:19:HAL_DMA_Start_IT	8
+/local/home/achraftm/STM32CubeMP13/Drivers/STM32MP13xx_HAL_Driver/Src/stm32mp13xx_hal_dma.c:634:19:HAL_DMA_Abort	6
+/local/home/achraftm/STM32CubeMP13/Drivers/STM32MP13xx_HAL_Driver/Src/stm32mp13xx_hal_dma.c:720:19:HAL_DMA_Abort_IT	3
+/local/home/achraftm/STM32CubeMP13/Drivers/STM32MP13xx_HAL_Driver/Src/stm32mp13xx_hal_dma.c:757:19:HAL_DMA_PollForTransfer	19
+/local/home/achraftm/STM32CubeMP13/Drivers/STM32MP13xx_HAL_Driver/Src/stm32mp13xx_hal_dma.c:927:6:HAL_DMA_IRQHandler	34
+/local/home/achraftm/STM32CubeMP13/Drivers/STM32MP13xx_HAL_Driver/Src/stm32mp13xx_hal_dma.c:1160:19:HAL_DMA_RegisterCallback	10
+/local/home/achraftm/STM32CubeMP13/Drivers/STM32MP13xx_HAL_Driver/Src/stm32mp13xx_hal_dma.c:1229:19:HAL_DMA_UnRegisterCallback	11
+/local/home/achraftm/STM32CubeMP13/Drivers/STM32MP13xx_HAL_Driver/Src/stm32mp13xx_hal_dma.c:1320:22:HAL_DMA_GetState	1
+/local/home/achraftm/STM32CubeMP13/Drivers/STM32MP13xx_HAL_Driver/Src/stm32mp13xx_hal_dma.c:1331:10:HAL_DMA_GetError	1
